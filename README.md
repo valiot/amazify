@@ -1,4 +1,4 @@
-== README
+# README
 
 > Plataforma de contenido curado para toda la comunidad de Noches de Pitcheo
 
@@ -27,5 +27,11 @@ Assign user role
 ```rb
 #Default role: 0
 #Admin role: 1
-u.role = 1
+u.role = 0
+```
+
+Save user
+
+```rb
+u.save
 ```
