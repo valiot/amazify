@@ -1,27 +1,74 @@
-<header>
-  <div class="home-items">
-    <a href="/issues" class="issues">ARCHIVES</a><span class="divider">|</span>
-    <a href="#" class="search">SEARCH</a><span class="divider">|</span>
-    <a href="/issues/<%= @issues.last.id %>" class="latest">LATEST ISSUE</a><span class="divider">|</span>
-    <a href="#">RSS</a>
-  </div>
+<header class="mainHeader">
+  <a href="/" class="header-logo">
+    <%= image_tag 'logo-white.svg' %>
+  </a>
 </header>
-<main>
-  <h1 class="main-title">Disruptive Newsletter</h1>
-  <h2 class="main-pitch">A free, once–weekly e-mail round-up of Disruptive news and articles.</h2>
-  <%= image_tag 'newsletter-sample.png', class: 'newsletter-sample' %>
-  <form action="//disruptiveangels.us12.list-manage.com/subscribe/post?u=aa8d10d2414ce7773877e2c27&amp;id=771ca21c99" class="subscribe-form" method="post" target="_blank">
-    <input type="email" placeholder="Enter your e-mail address" name="EMAIL" value="" required="">
-    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_aa8d10d2414ce7773877e2c27_771ca21c99" tabindex="-1" value=""></div>
-    <button type="submit" value="Subscribe" name="subscribe">Subscribe now »</button>
-    <div>Join other subscribers today. No spam, ever.</div>
-  </form>
-  <div class="sample">
-    Check out <a href="/issues/<%= @issues.last.id %>">our latest issue (<%= @issues.last.id %>)</a> for a sample of what we're all about.
-  </div>
-  <div>
-    One e-mail each Thursday. Easy to unsubscribe.<br>
-    We don't sell your details — your e-mail address is <a href="https://cooperpress.com/spam.html">safe</a><br>
-    Published by <a href="https://disruptiveangels.com/">Disruptive Angels</a> and curated by <a href="http://twitter.com/acrogenesis">Adrián Rangel</a>
-  </div>
+<main class="main">
+  <h1 class="title-main">La mejor plataforma con contenido  de <span>emprendedores para emprendedores</span></h1>
+  <a href="#footer" class="btn btn--secondary">Suscríbete</a>
 </main>
+
+<section class="container">
+  <div class="categories">
+    <h2 class="categories-title">Categorías:</h2>
+    <div class="categories-container">
+      <% @categories.each do |category| %>
+        <a href="/" class="category"><%= category.name.titleize %></a>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="articles">
+    <h2 class="articles-title">Recomendaciones de hoy:</h2>
+    <div class="articles-container">
+      <% @articles.each do |article| %>
+        <article class="article">
+          <span class="article-readTime"><%= article.length %> minutos</span>
+          <a href="#0" class="article-category"><%= article.category.name.titleize %></a>
+          <a href="#0" class="article-link">
+            <figure class="article-image">
+              <%= image_tag article.image %>
+            </figure>
+            <h3 class="article-title"><%= article.title %></h3>
+          </a>
+        </article>
+      <% end %>
+
+      <button class="btn btn--primary btn--loadmore">Seguir leyendo</button>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer" id="footer">
+    <div class="newsletter">
+      <h4 class="title title--footer">¡Suscríbete!</h4>
+      <p class="subtitle subtitle--footer">Recibe en tu correo contenido seleccionado <span>de la plataforma semanalmente.</span></p>
+
+  <form action="//disruptiveangels.us12.list-manage.com/subscribe/post?u=aa8d10d2414ce7773877e2c27&amp;id=771ca21c99" class="subscribe-form" method="post" target="_blank">
+    <div class="newsletter-inputs">
+      <input type="email" class="email" placeholder="Enter your e-mail address" name="EMAIL" value="" required="">
+      <input type="submit" value="Enviar" name="subscribe" class="button">
+    </div>
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_aa8d10d2414ce7773877e2c27_771ca21c99" tabindex="-1" value=""></div>
+  </form>
+  <div class="copyrights">
+    <div class="socialmedia">
+      <a href="#0" class="social-link" target="_blank">
+        <%= image_tag 'icon-facebook.svg', alt: 'Facebook' %>
+      </a>
+      <a href="#0" class="social-link" target="_blank">
+        <%= image_tag 'icon-twitter.svg', alt: 'Twitter' %>
+      </a>
+      <a href="#" class="social-link" target="_blank">
+        <%= image_tag 'icon-instagram.svg', alt: 'Instagram' %>
+      </a>
+    </div>
+
+    <p>Amazify.co - Todos los derechos reservados, 2017</p>
+
+    <a href="#0" class="powered-by">
+      <%= image_tag 'powered-by.svg', alt: 'Powered by Noches de Pitcheo' %>
+    </a>
+  </div>
+</footer>

@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @issues = Issue.all
+    @articles = Article.all
+    @categories = Category.all
   end
 end
