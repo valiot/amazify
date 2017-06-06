@@ -25,7 +25,7 @@
         <article class="article">
           <span class="article-readTime"><%= article.length %> minutos</span>
           <a href="#0" class="article-category"><%= article.category.name.titleize %></a>
-          <a href="#0" class="article-link">
+          <a href="<%= article.link %>" class="article-link" target="_blank">
             <figure class="article-image">
               <%= image_tag article.image %>
             </figure>
