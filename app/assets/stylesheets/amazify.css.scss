@@ -656,7 +656,7 @@ body {
 }
 @media only screen and (min-width: 680px) {
   .footer {
-    background: url(asset-path("footer-bg.svg")) #e9b54c bottom center no-repeat;
+    background: url("/img/footer-bg.svg") #e9b54c bottom center no-repeat;
   }
 }
 @media only screen and (max-width: 680px) {
@@ -690,8 +690,8 @@ body {
 }
 @media only screen and (min-width: 1100px) {
   .main {
-    background: url(asset-path("main-bg-right.svg")) no-repeat 100% 50%, url(asset-path("main-bg-left.svg")) no-repeat -5% 50%, -webkit-gradient(linear, left top, right top, color-stop(0, #6377b8), to(#734c98));
-    background: url(asset-path("main-bg-right.svg")) no-repeat 100% 50%, url(asset-path("main-bg-left.svg")) no-repeat -5% 50%, linear-gradient(90deg, #6377b8 0, #734c98 100%);
+    background: url("/img/main-bg-right.svg") no-repeat 100% 50%, url("/img/main-bg-left.svg") no-repeat -5% 50%, -webkit-gradient(linear, left top, right top, color-stop(0, #6377b8), to(#734c98));
+    background: url("/img/main-bg-right.svg") no-repeat 100% 50%, url("/img/main-bg-left.svg") no-repeat -5% 50%, linear-gradient(90deg, #6377b8 0, #734c98 100%);
     background-size: contain, contain, auto;
   }
 }
