@@ -80,7 +80,7 @@ class Article < ActiveRecord::Base
     secret_access_key: ENV['AWS_SECRET'])
 
     bucket = service.buckets.find(ENV['S3_BUCKET'])
-    new_object = bucket.objects.build("#{filename}-#{SecureRandom.hex}.#{extension}")
+    new_object = bucket.objects.build("amazify/#{filename}-#{SecureRandom.hex}.#{extension}")
     new_object.content = open(image.path)
 
 
