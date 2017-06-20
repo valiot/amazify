@@ -30,7 +30,7 @@
             <figure class="article-image">
               <%= image_tag article.image %>
             </figure>
-            <h3 class="article-title"><%= article.title %></h3>
+            <h3 class="article-title"><%= truncate(article.title, length: 90) %></h3>
           </a>
         </article>
       <% end %>
