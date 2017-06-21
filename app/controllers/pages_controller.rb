@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
   def home
-    @articles = Article.all.page(params[:page]).per(12)
-    if params[:category_id]
-      @articles = Article.where(category_id: params[:category_id]).page(params[:page]).per(12)
+    @categories = Category.all
+    @articles = Article.all.page(params[:page]).per(2)
+    if params[:category]
+      @articles = @categories.find_by(name: params[:category]).articles.page(params[:page]).per(2)
     end
     @categories = Category.all
 

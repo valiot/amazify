@@ -18,6 +18,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   def create
     @category = Category.new(category_params)
     authorize @category
+    @category.name = @category.name.parameterize
     if @category.save
       redirect_to [:admin, @category], notice: 'Category was successfully created.'
     else
