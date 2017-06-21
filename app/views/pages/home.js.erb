@@ -1,0 +1,2 @@
+$('.articles-container').append("<%= escape_javascript(render 'pages/articles')%>");
+$('#load_more_link').replaceWith("<%= escape_javascript(link_to_next_page(@articles, 'Seguir Leyendo', remote: true, id:'load_more_link', class: 'btn btn--primary btn--loadmore'))%>");

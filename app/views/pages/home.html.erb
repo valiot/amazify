@@ -22,20 +22,10 @@
   <div class="articles">
     <h2 class="articles-title">Recomendaciones de hoy:</h2>
     <div class="articles-container">
-      <% @articles.each do |article| %>
-        <article class="article">
-          <span class="article-readTime"><%= article.reading_time %> minutos</span>
-          <a href="#0" class="article-category"><%= article.category.name.titleize %></a>
-          <a href="<%= article.link %>" class="article-link" target="_blank">
-            <figure class="article-image">
-              <%= image_tag article.image %>
-            </figure>
-            <h3 class="article-title"><%= article.title %></h3>
-          </a>
-        </article>
-      <% end %>
+      <%= render 'articles' %>
     </div>
-    <button class="btn btn--primary btn--loadmore">Seguir leyendo</button>
+      <%#= paginate @articles %>
+    <%= link_to_next_page(@articles, 'Seguir Leyendo', remote: true, id: "load_more_link", class: 'btn btn--primary btn--loadmore') %>
   </div>
 </section>
 
