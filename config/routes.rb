@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   get 'issues/latest' => 'issues#latest', as: 'issue_latest'
 
   resources :issues, only: [:index, :show]
-
+  get 'pages/home/:category_id' =>'pages#home',  as: 'pages_home'
   root 'pages#home'
 end
