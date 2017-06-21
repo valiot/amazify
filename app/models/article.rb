@@ -1,6 +1,5 @@
 require 'open-uri'
 class Article < ActiveRecord::Base
-  paginates_per 4
   belongs_to :category
   belongs_to :issue
   enum status: [:submited, :approved, :rejected]
