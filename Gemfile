@@ -9,6 +9,7 @@ gem 'pundit'
 gem 's3'
 gem 'premailer-rails'
 gem 'mini_magick'
+gem 'kaminari'
 
 group :production do
   gem 'rails_12factor'

@@ -1,0 +1,12 @@
+<% @articles.each do |article| %>
+  <article class="article">
+    <span class="article-readTime"><%= article.reading_time %> minutos</span>
+    <a href="#0" class="article-category"><%= article.category.name.titleize %></a>
+    <a href="<%= article.link %>" class="article-link" target="_blank">
+      <figure class="article-image">
+        <%= image_tag article.image %>
+      </figure>
+      <h3 class="article-title"><%= truncate(article.title, length: 90) %></h3>
+    </a>
+  </article>
+<% end %>
