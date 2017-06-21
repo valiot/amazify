@@ -48,7 +48,7 @@ class Admin::ArticlesController < Admin::ApplicationController
   def create
     @article = Article.new(article_params)
     authorize @article
-    @article.link.gsub!(/(\&|\?)utm([_a-z0-9=]+)/, "")
+    @article.link.gsub!(/(\&|)utm([_a-z0-9=]+), "")
     if @article.save
       redirect_to [:admin, @article], notice: 'Article was successfully created.'
     else
