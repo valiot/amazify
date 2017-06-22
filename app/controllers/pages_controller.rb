@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   def home
     @categories = Category.all
     @articles = Article.all.page(params[:page]).per(2)
-    if params[:category]
-      @articles = @categories.find_by(name: params[:category]).articles.page(params[:page]).per(2)
+    if params[:slug]
+      @articles = @categories.find_by(slug: params[:slug]).articles.page(params[:page]).per(2)
     end
     @categories = Category.all
 
@@ -12,8 +12,4 @@ class PagesController < ApplicationController
       format.js
     end
   end
-
-
-
-
 end

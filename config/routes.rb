@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   get 'issues/latest' => 'issues#latest', as: 'issue_latest'
 
   resources :issues, only: [:index, :show]
-  get 'category/:category' =>'pages#home',  as: 'pages_categories'
+  get 'category/:slug' =>'pages#home',  as: 'pages_categories'
   root 'pages#home'
 end

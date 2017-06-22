@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20170621222246) do
     t.string   "slug"
   end
 
+  add_index "categories", ["slug"], name: "index_categories_on_slug", using: :btree
+
   create_table "issues", force: :cascade do |t|
     t.date     "issued_at"
     t.integer  "guid"
