@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   def home
-    @articles = Article.all.page(params[:page]).per(12)
+    @categories = Category.all
+    @articles = Article.all.page(params[:page]).per(2)
+    if params[:slug]
+      @articles = @categories.find_by(slug: params[:slug]).articles.page(params[:page]).per(2)
+    end
     @categories = Category.all
 
     respond_to do |format|

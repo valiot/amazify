@@ -14,7 +14,7 @@
     <h2 class="categories-title">Categorías:</h2>
     <div class="categories-container">
       <% @categories.each do |category| %>
-        <a href="/" class="category"><%= category.name.titleize %></a>
+        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category"%>
       <% end %>
     </div>
   </div>
