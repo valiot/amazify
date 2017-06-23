@@ -3,7 +3,9 @@ class PagesController < ApplicationController
     @categories = Category.all
     @articles = Article.all.page(params[:page]).per(2)
     if params[:slug]
-      @articles = @categories.find_by(slug: params[:slug]).articles.page(params[:page]).per(2)
+      @category = @categories.find_by(slug: params[:slug])
+      @articles = @category.articles.page(params[:page]).per(2)
+      @sel = @category.id
     end
     @categories = Category.all
 
