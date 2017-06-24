@@ -14,7 +14,7 @@
     <h2 class="categories-title">Categorías:</h2>
     <div class="categories-container">
       <% @categories.each do |category| %>
-        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category", id: "cat_#{category.id}" %>
+        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category", id: "#{category.slug}" %>
       <% end %>
     </div>
   </div>
@@ -62,5 +62,10 @@
   </div>
 </footer>
 <script type="text/javascript">
-  $('#cat_<%=@sel%>').addClass('active');
+  $('#cat_<%=@id%>').addClass('active');
+
+  <% if(@id!=nil) %>
+  
+    <% end %>
+
 </script>
