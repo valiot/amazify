@@ -1,6 +1,7 @@
 require 'open-uri'
 class Article < ActiveRecord::Base
   belongs_to :category
+  belongs_to :user
   belongs_to :issue
   enum status: [:submited, :approved, :rejected]
 
