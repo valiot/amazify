@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   belongs_to :issue
   enum status: [:submited, :approved, :rejected]
+  validates :link, uniqueness: true, presence: true
 
   before_create :parse_link
   before_create :set_issue
