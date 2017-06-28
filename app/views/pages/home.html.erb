@@ -14,7 +14,7 @@
     <h2 class="categories-title">Categorías:</h2>
     <div class="categories-container">
       <% @categories.each do |category| %>
-        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category"%>
+        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category", id: "#{category.slug}" %>
       <% end %>
     </div>
   </div>
@@ -24,7 +24,6 @@
     <div class="articles-container">
       <%= render 'articles' %>
     </div>
-      <%#= paginate @articles %>
     <%= link_to_next_page(@articles, 'Seguir Leyendo', remote: true, id: "load_more_link", class: 'btn btn--primary btn--loadmore') %>
   </div>
 </section>
@@ -62,3 +61,6 @@
     </a>
   </div>
 </footer>
+<script type="text/javascript">
+  $('#<%= @slug %>').addClass('active');
+</script>
