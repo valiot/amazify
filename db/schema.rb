@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621222246) do
+ActiveRecord::Schema.define(version: 20170628012506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,10 +27,13 @@ ActiveRecord::Schema.define(version: 20170621222246) do
     t.integer  "length"
     t.string   "image"
     t.integer  "issue_id"
+    t.integer  "user_id"
   end
 
   add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
   add_index "articles", ["issue_id"], name: "index_articles_on_issue_id", using: :btree
+  add_index "articles", ["link"], name: "index_articles_on_link", unique: true, using: :btree
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -60,4 +63,5 @@ ActiveRecord::Schema.define(version: 20170621222246) do
 
   add_foreign_key "articles", "categories"
   add_foreign_key "articles", "issues"
+  add_foreign_key "articles", "users"
 end
