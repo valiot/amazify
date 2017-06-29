@@ -2,7 +2,7 @@
 xml.instruct! :xml, version: '1.0'
 xml.rss :version => '2.0', 'xmlns:media' => 'http://search.yahoo.com/mrss/', 'xmlns:daNews' => 'http://inbox.disruptiveangels.com/issues/feed' do
   xml.channel do
-    xml.title 'Disruptive Newsletter'
+    xml.title 'Amazify Newsletter'
     xml.description @issue.id
     xml.language 'en'
 

@@ -1,25 +1,31 @@
+<!-- header of home-->
 <header class="mainHeader">
   <a href="/" class="header-logo">
     <%= image_tag 'logo-white.svg' %>
   </a>
 </header>
 
-<main class="main">
+<main class="main" id = "main">
   <h1 class="title-main">La mejor plataforma con contenido  de <span>emprendedores para emprendedores</span></h1>
   <a href="#footer" class="btn btn--secondary">Subscríbete</a>
 </main>
 
+</head>
+
+<!-- header of home-->
+
+<body>
 <section class="container">
   <div class="categories">
     <h2 class="categories-title">Categorías:</h2>
     <div class="categories-container">
       <% @categories.each do |category| %>
-        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category", id: "#{category.slug}" %>
+        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug),  class: "category", id: "#{category.slug}" %>
       <% end %>
     </div>
   </div>
 
-  <div class="articles">
+  <div class="articles" id="article">
     <h2 class="articles-title">Recomendaciones de hoy:</h2>
     <div class="articles-container">
       <%= render 'articles' %>
@@ -27,7 +33,9 @@
     <%= link_to_next_page(@articles, 'Seguir Leyendo', remote: true, id: "load_more_link", class: 'btn btn--primary btn--loadmore') %>
   </div>
 </section>
+</body>
 
+<!-- footer of home-->
 <footer class="footer" id="footer">
   <div class="newsletter">
     <h4 class="title title--footer">Subscríbete!</h4>
@@ -61,6 +69,18 @@
     </a>
   </div>
 </footer>
+
+
 <script type="text/javascript">
   $('#<%= @slug %>').addClass('active');
+
+  $(document).on('turbolinks:render', function() {
+      console.log("hey")
+      var main_height = document.getElementById('main').offsetHeight;
+      window.scrollTo(0, main_height);
+});
+
+
+
+
 </script>
