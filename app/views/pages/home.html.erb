@@ -4,41 +4,34 @@
     <%= image_tag 'logo-white.svg' %>
   </a>
 </header>
-
 <main class="main" id = "main">
   <h1 class="title-main">La mejor plataforma con contenido  de <span>emprendedores para emprendedores</span></h1>
   <a href="#footer" class="btn btn--secondary">Subscríbete</a>
 </main>
-
-</head>
-
 <!-- header of home-->
-
 <body>
 <section class="container">
   <div class="categories">
     <h2 class="categories-title">Categorías:</h2>
     <div class="categories-container">
       <% @categories.each do |category| %>
-        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug),  class: "category", id: "#{category.slug}" %>
+        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category", id: "#{category.slug}" %>
       <% end %>
     </div>
   </div>
 
   <div class="articles" id="article">
-    <% if(@slug!= nil)%>
-      <h2 class="articles-title"><%= @slug.capitalize%>:</h2>
-      <% else%>
-          <h2 class="articles-title">Recomendaciones de hoy:</h2>
-        <% end%>
+    <% if(@slug!= nil) %>
+      <h2 class="articles-title"><%= @slug.capitalize %>:</h2>
+    <% else%>
+      <h2 class="articles-title">Recomendaciones de hoy:</h2>
+    <% end%>
     <div class="articles-container">
       <%= render 'articles' %>
     </div>
     <%= link_to_next_page(@articles, 'Seguir Leyendo', remote: true, id: "load_more_link", class: 'btn btn--primary btn--loadmore') %>
   </div>
 </section>
-</body>
-
 <!-- footer of home-->
 <footer class="footer" id="footer">
   <div class="newsletter">
@@ -74,7 +67,6 @@
   </div>
 </footer>
 
-
 <script type="text/javascript">
   $('#<%= @slug %>').addClass('active');
 
@@ -82,8 +74,4 @@
       var main_height = document.getElementById('main').offsetHeight;
       window.scrollTo(0, main_height);
 });
-
-
-
-
 </script>
