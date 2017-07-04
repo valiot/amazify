@@ -14,3 +14,18 @@
 //= require jquery_ujs
 //= require amazify.min
 //= require turbolinks
+
+$.fn.scrollPosReaload = function(){
+  if (localStorage) {
+    var posReader = localStorage["posStorage"];
+    if (posReader) {
+      $(window).scrollTop(posReader);
+      localStorage.removeItem("posStorage");
+    }
+    $(this).click(function(e) {
+      localStorage["posStorage"] = $(window).scrollTop();
+    });
+    return true;
+  }
+  return false;
+}

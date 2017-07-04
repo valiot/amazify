@@ -6,7 +6,7 @@
 </header>
 <main class="main" id="main">
   <h1 class="title-main">La mejor plataforma con contenido  de <span>emprendedores para emprendedores</span></h1>
-  <a href="#footer" class="btn btn--secondary">Subscríbete</a>
+  <a href="#socialmedia" class="btn btn--secondary">Subscríbete</a>
 </main>
 <!-- header of home-->
 <section class="container">
@@ -14,7 +14,7 @@
     <h2 class="categories-title">Categorías:</h2>
     <div class="categories-container">
       <% @categories.each do |category| %>
-        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), data: {'turbolinks-keep-scroll': 'true'}, class: "category", id: "#{category.slug}" %>
+        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category", id: "#{category.slug}" %>
       <% end %>
     </div>
   </div>
@@ -28,7 +28,7 @@
   </div>
 </section>
 <!-- footer of home-->
-<footer class="footer" id="footer">
+<footer class="footer">
   <div class="newsletter">
     <h4 class="title title--footer">Subscríbete!</h4>
     <p class="subtitle subtitle--footer">Recibe en tu correo contenido seleccionado <span>de la plataforma semanalmente.</span></p>
@@ -42,7 +42,7 @@
     </form>
   </div>
   <div class="copyrights">
-    <div class="socialmedia">
+    <div class="socialmedia" id="socialmedia">
       <a href="https://www.facebook.com/amazify.co/" class="social-link" target="_blank">
         <%= image_tag 'icon-facebook.svg', alt: 'Facebook' %>
       </a>
@@ -64,9 +64,7 @@
 
 <script type="text/javascript">
   $('#<%= @slug %>').addClass('active');
-
-  $(document).on('turbolinks:render', function() {
-    var main_height = document.getElementById('main').offsetHeight;
-    window.scrollTo(0, main_height);
+  $(document).on('turbolinks:load', function() {
+    $('.category').scrollPosReaload();
   });
 </script>
