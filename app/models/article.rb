@@ -73,7 +73,7 @@ class Article < ActiveRecord::Base
 
   def crop_image_and_upload_to_s3(url)
     return false if url.nil?
-    image = MiniMagick::Image.open(url)
+    image = MiniMagick::Image.open(url, nil, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE)
     image = resize_with_crop(image, 360, 240)
 
     uri = URI.parse(url)
@@ -90,7 +90,7 @@ class Article < ActiveRecord::Base
   end
 
   def parse_link
-    page = MetaInspector.new(link)
+    page = MetaInspector.new(link, faraday_options: { ssl: { verify: false } })
     self.description = page.description
     self.title = page.title
     self.length = page.body_length
