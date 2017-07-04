@@ -4,12 +4,11 @@
     <%= image_tag 'logo-white.svg' %>
   </a>
 </header>
-<main class="main" id = "main">
+<main class="main" id="main">
   <h1 class="title-main">La mejor plataforma con contenido  de <span>emprendedores para emprendedores</span></h1>
   <a href="#footer" class="btn btn--secondary">Subscríbete</a>
 </main>
 <!-- header of home-->
-<body>
 <section class="container">
   <div class="categories">
     <h2 class="categories-title">Categorías:</h2>
@@ -21,11 +20,11 @@
   </div>
 
   <div class="articles" id="article">
-    <% if(@slug!= nil) %>
+    <% if(@slug != nil) %>
       <h2 class="articles-title"><%= @slug.capitalize %>:</h2>
-    <% else%>
+    <% else %>
       <h2 class="articles-title">Recomendaciones de hoy:</h2>
-    <% end%>
+    <% end %>
     <div class="articles-container">
       <%= render 'articles' %>
     </div>
@@ -71,7 +70,7 @@
   $('#<%= @slug %>').addClass('active');
 
   $(document).on('turbolinks:render', function() {
-      var main_height = document.getElementById('main').offsetHeight;
-      window.scrollTo(0, main_height);
-});
+    var main_height = document.getElementById('main').offsetHeight;
+    window.scrollTo(0, main_height);
+  });
 </script>
