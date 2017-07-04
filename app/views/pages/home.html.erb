@@ -14,17 +14,13 @@
     <h2 class="categories-title">Categorías:</h2>
     <div class="categories-container">
       <% @categories.each do |category| %>
-        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category", id: "#{category.slug}" %>
+        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), data: {'turbolinks-keep-scroll': 'true'}, class: "category", id: "#{category.slug}" %>
       <% end %>
     </div>
   </div>
 
   <div class="articles" id="article">
-    <% if(@slug != nil) %>
-      <h2 class="articles-title"><%= @slug.capitalize %>:</h2>
-    <% else %>
-      <h2 class="articles-title">Recomendaciones de hoy:</h2>
-    <% end %>
+    <h2 class="articles-title"><%= @slug&.capitalize || 'Recomendaciones de hoy:' %>:</h2>
     <div class="articles-container">
       <%= render 'articles' %>
     </div>
