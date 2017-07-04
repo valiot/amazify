@@ -50,25 +50,25 @@ class Article < ActiveRecord::Base
 
   def crop_offsets_by_gravity(gravity, original_dimensions, cropped_dimensions)
     raise(ArgumentError, "Gravity must be one of #{GRAVITY_TYPES.inspect}") unless GRAVITY_TYPES.include?(gravity.to_sym)
-    raise(ArgumentError, "Original dimensions must be supplied as a [ width, height ] array") unless original_dimensions.kind_of?(Enumerable) && original_dimensions.size == 2
-    raise(ArgumentError, "Cropped dimensions must be supplied as a [ width, height ] array") unless cropped_dimensions.kind_of?(Enumerable) && cropped_dimensions.size == 2
+    raise(ArgumentError, 'Original dimensions must be supplied as a [ width, height ] array') unless original_dimensions.kind_of?(Enumerable) && original_dimensions.size == 2
+    raise(ArgumentError, 'Cropped dimensions must be supplied as a [ width, height ] array') unless cropped_dimensions.kind_of?(Enumerable) && cropped_dimensions.size == 2
 
     original_width, original_height = original_dimensions
     cropped_width, cropped_height = cropped_dimensions
 
     vertical_offset = case gravity
-    when :north_west, :north, :north_east then 0
-    when :center, :east, :west then [ ((original_height - cropped_height) / 2.0).to_i, 0 ].max
-    when :south_west, :south, :south_east then (original_height - cropped_height).to_i
-    end
+                      when :north_west, :north, :north_east then 0
+                      when :center, :east, :west then [((original_height - cropped_height) / 2.0).to_i, 0 ].max
+                      when :south_west, :south, :south_east then (original_height - cropped_height).to_i
+                      end
 
     horizontal_offset = case gravity
-    when :north_west, :west, :south_west then 0
-    when :center, :north, :south then [ ((original_width - cropped_width) / 2.0).to_i, 0 ].max
-    when :north_east, :east, :south_east then (original_width - cropped_width).to_i
-    end
+                        when :north_west, :west, :south_west then 0
+                        when :center, :north, :south then [ ((original_width - cropped_width) / 2.0).to_i, 0 ].max
+                        when :north_east, :east, :south_east then (original_width - cropped_width).to_i
+                        end
 
-    return [ horizontal_offset, vertical_offset ]
+    [horizontal_offset, vertical_offset]
   end
 
   def crop_image_and_upload_to_s3(url)
@@ -79,12 +79,11 @@ class Article < ActiveRecord::Base
     uri = URI.parse(url)
     filename, extension = uri.path.split('/')[-1].split('.')[-2..-1]
     service = S3::Service.new(access_key_id: ENV['AWS_KEY'],
-    secret_access_key: ENV['AWS_SECRET'])
+                              secret_access_key: ENV['AWS_SECRET'])
 
     bucket = service.buckets.find(ENV['S3_BUCKET'])
     new_object = bucket.objects.build("amazify/#{filename}-#{SecureRandom.hex}.#{extension}")
     new_object.content = open(image.path)
-
 
     return new_object.url if new_object.save
     false
@@ -101,5 +100,4 @@ class Article < ActiveRecord::Base
   def set_issue
     self.issue = Issue.current_issue
   end
-
 end
