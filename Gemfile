@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.4.1'
 
-gem 'thin'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'metainspector'
@@ -10,13 +9,10 @@ gem 's3'
 gem 'premailer-rails'
 gem 'mini_magick'
 gem 'kaminari'
+gem 'puma'
 
-group :production do
-  gem 'rails_12factor'
-  gem 'puma'
-end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.8'
+gem 'rails', '5.0.4'
 # Use pg as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
