@@ -7,7 +7,7 @@ gem 'metainspector'
 gem 'pundit'
 gem 's3'
 gem 'premailer-rails'
-gem 'mini_magick', github: 'acrogenesis/minimagick', branch: 'patch-1'
+gem 'mini_magick'
 gem 'kaminari'
 gem 'puma'
 

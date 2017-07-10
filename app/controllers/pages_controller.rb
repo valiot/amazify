@@ -6,6 +6,7 @@ class PagesController < ApplicationController
       @category = @categories.find_by(slug: params[:slug])
       @articles = @category.articles.page(params[:page]).per(12).order(created_at: :desc)
       @slug = @category.slug
+      @catName = @category.name
     end
     @categories = Category.all
     respond_to do |format|
