@@ -7,7 +7,6 @@ class PagesController < ApplicationController
       @articles = @category.articles.page(params[:page]).per(12).order(created_at: :desc)
       @slug = @category.slug
     end
-    @categories = Category.all
     respond_to do |format|
       format.html
       format.js
