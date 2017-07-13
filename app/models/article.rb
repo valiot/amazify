@@ -5,6 +5,8 @@ class Article < ActiveRecord::Base
   belongs_to :issue
   enum status: [:submited, :approved, :rejected]
   validates :link, uniqueness: true, presence: true
+  after_create :chek_atributes
+
 
   before_create :parse_link
   before_create :set_issue
@@ -99,5 +101,9 @@ class Article < ActiveRecord::Base
 
   def set_issue
     self.issue = Issue.current_issue
+  end
+
+  def chek_atributes
+    self.destroy if(self.title = nil || self.description = nil)
   end
 end
