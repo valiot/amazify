@@ -104,6 +104,6 @@ class Article < ActiveRecord::Base
   end
 
   def chek_atributes
-    self.destroy if(self.title = nil || self.description = nil)
+    destroy if title.nil? || description.nil?
   end
 end
