@@ -27,6 +27,13 @@
     <%= link_to_next_page(@articles, 'Seguir Leyendo', remote: true, id: "load_more_link", class: 'btn btn--primary btn--loadmore', "data-turbolinks-track": false ) %>
   </div>
 </section>
+<!-- request of home -->
+<article class="login-request">
+  <p>
+    Regístrate para mandarte los mejores artículos de acuerdo a tus intereses :)<br>
+    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" scope="public_profile,email" data-auto-logout-link="true" onlogin="checkLoginState();"></div>
+  </p>
+</article>
 <!-- footer of home-->
 <footer class="footer">
   <div class="newsletter">
@@ -56,7 +63,7 @@
 
     <p>Amazify.co - Todos los derechos reservados, 2017</p>
 
-    <a href="http://nochesdepitcheo.com/" class="powered-by">
+    <a href="https://nochesdepitcheo.com/" class="powered-by">
       <%= image_tag 'powered-by.svg', alt: 'Powered by Noches de Pitcheo' %>
     </a>
   </div>

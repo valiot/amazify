@@ -12,4 +12,15 @@ class PagesController < ApplicationController
       format.js
     end
   end
+
+  def registra_face
+    @user = User.new(param_user)
+    if @user.save
+      json_response(@user, :create)
+    end
+  end
+
+  def param_user
+    params.permit(:name, :id_facebook, :email)
+  end
 end

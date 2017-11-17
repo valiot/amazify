@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :categories
   end
 
+  post 'registra_face' => 'pages#registra_face', as: 'registra_usuario'
+
   get 'issues/latest' => 'issues#latest', as: 'issue_latest'
 
   resources :issues, only: [:index, :show]

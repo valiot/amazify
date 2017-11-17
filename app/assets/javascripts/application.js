@@ -29,3 +29,41 @@ $.fn.scrollPosReaload = function(){
   }
   return false;
 }
+
+function checkLoginState() {
+	FB.getLoginStatus(function(response) {
+		statusChangeCallback(response);
+	});
+}
+function statusChangeCallback (response) {
+	console.log(response['status']);
+	if (response['status'] === 'not_authorized') {
+		FB.login();
+	} else if (response['status'] !== 'connected') {
+		$('article.login-request').toggle();
+	} else if (response['status'] === 'connected') {
+		$('article.login-request').addClass('hidden');
+		FB.api(
+			'/me',
+			'GET',
+			{"fields":"id,name,email,short_name"},
+			function(response) {
+				$.post(
+					'/registra_face',
+					{
+						id_facebook	:	response.id,
+						name				:	response.name,
+						email				:	response.email
+					}
+				).always(function(data){
+					console.log(data);
+				});
+			}
+		);
+	}
+}
+checkLoginState();
+$(document).on('turbolinks:load',function(){
+  //FB check status
+	$('article.login-request').toggle();
+});

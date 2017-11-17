@@ -784,3 +784,20 @@ body {
             flex-direction: column;
   }
 }
+article.login-request {
+  position: fixed;
+  bottom: 0px;
+  background: #FFF;
+  width: 100%;
+}
+article.login-request > p {
+  text-align: center;
+  color: rgb(99, 119, 184);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+article.login-request > div {
+  display: block;
+  margin: 0px auto;
+  width: 282px;
+}
