@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post 'registra_face' => 'pages#registra_face', as: 'registra_usuario'
   post 'update_user' => 'pages#update_user', as: 'actualiza_info_usuario'
 
+  get 'og_link' => 'pages#og_link', as: 'track_link'
   get 'issues/latest' => 'issues#latest', as: 'issue_latest'
 
   resources :issues, only: [:index, :show]
