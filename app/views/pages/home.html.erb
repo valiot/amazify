@@ -4,9 +4,10 @@
     <%= image_tag 'logo-white.svg' %>
   </a>
 </header>
+<a id="btn_user" class="hidden">Hola</a>
 <main class="main" id="main">
   <h1 class="title-main">La mejor plataforma con contenido  de <span>emprendedores para emprendedores</span></h1>
-  <a href="#socialmedia" class="btn btn--secondary">Subscríbete</a>
+  <!-- <a href="#socialmedia" class="btn btn--secondary">Subscríbete</a> -->
 </main>
 <!-- header of home-->
 <section class="container">
@@ -29,10 +30,9 @@
 </section>
 <!-- request of home -->
 <article class="login-request">
-  <p>
-    Regístrate para mandarte los mejores artículos de acuerdo a tus intereses :)<br>
-    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" scope="public_profile,email" data-auto-logout-link="true" onlogin="checkLoginState();"></div>
-  </p>
+  <p>Regístrate para mandarte los mejores artículos de acuerdo a tus intereses :)</p>
+  <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" scope="public_profile,email" data-auto-logout-link="true" onlogin="checkLoginState();"></div>
+  <br>
 </article>
 <!-- footer of home-->
 <footer class="footer">
@@ -68,6 +68,27 @@
     </a>
   </div>
 </footer>
+
+<div id="user_data" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>¡Hola <span></span>! En este momento puedes editar tu información para que recibas de la mejor forma todas nuestras sorpresas :)</h2>
+    </div>
+    <div class="modal-body">
+      <p>Tu nombre:</p>
+      <input id="name" type="text" required/>
+      <label><em id="lb_name">Debes agregar tu nombre :)</em></label>
+      <p>Tu email:</p>
+      <input id="email" type="email" required/>
+      <label><em id="lb_email">Debes agregar un email válido :)</em></label>
+    </div>
+    <div class="modal-footer">
+      <button id="update_data" type="button" class="button">Actualizar datos</button>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript">
   $('#<%= @slug %>').addClass('active');

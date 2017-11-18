@@ -51,26 +51,6 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
-    <!-- Facebook Login -->
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '830165073831075',
-          cookie     : true,
-          xfbml      : true,
-          version    : 'v2.11'
-        });
-        FB.AppEvents.logPageView();
-      };
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "https://connect.facebook.net/es_LA/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <!-- End Facebook Login -->
     <%= javascript_include_tag "application", 'data-turbolinks-track' => 'reload' %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -85,6 +65,25 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!-- Facebook Login -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '830165073831075',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.11'
+        });
+        FB.AppEvents.logPageView();
+        checkLoginState();
+      };
+      (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/es_LA/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];

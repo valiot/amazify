@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   post 'registra_face' => 'pages#registra_face', as: 'registra_usuario'
+  post 'update_user' => 'pages#update_user', as: 'actualiza_info_usuario'
 
   get 'issues/latest' => 'issues#latest', as: 'issue_latest'
 
