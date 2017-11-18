@@ -93,28 +93,33 @@ $(document).ready(function(){
 	$('#update_data').click(function () {
 		$('#lb_name', '.modal-body').add('#lb_email', '.modal-body').removeClass('active');
 		var
+		thVerif		= 0,
 		thName 		= $('#name', '.modal-body').val(),
 		thEmail		= $('#email', '.modal-body').val(),
 		isEmail		=	/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		if (thName === '') {
 			$('#lb_name', '.modal-body').addClass('active');
+			thVerif++;
 		}
 		if (thEmail === '' || !isEmail.test(thEmail)) {
 			$('#lb_email', '.modal-body').addClass('active');
+			thVerif++;
 		}
-		$.post(
-			'update_user',
-			{
-				name	:	thName,
-				email	:	thEmail
-			}
-		).done(function (data){
-			$('#update_data', '.modal-footer').html('Datos actualizados');
-			$('#name', '.modal-body').val(data.name);
-			$('#email', '.modal-body').val(data.email);
-			setTimeout(function(){
-				$('#update_data', '.modal-footer').html('Actualizar datos');
-			}, 5000);
-		});
+		if (thVerif === 0){
+			$.post(
+				'update_user',
+				{
+					name	:	thName,
+					email	:	thEmail
+				}
+			).done(function (data){
+				$('#update_data', '.modal-footer').html('Datos actualizados');
+				$('#name', '.modal-body').val(data.name);
+				$('#email', '.modal-body').val(data.email);
+				setTimeout(function(){
+					$('#update_data', '.modal-footer').html('Actualizar datos');
+				}, 5000);
+			});
+		}
 	});
 });
