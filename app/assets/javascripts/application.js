@@ -38,9 +38,11 @@ function checkLoginState() {
 function statusChangeCallback (response) {
 	console.log(response['status']);
 	if (response['status'] === 'not_authorized') {
-		FB.login();
+		//FB.login();
+		ga('send', 'event', 'Usuarios', 'Visita', 'Sin cuenta');
 	} else if (response['status'] !== 'connected') {
 		$('article.login-request').removeClass('hidden');
+		ga('send', 'event', 'Usuarios', 'Visita', 'Sin Facebook');
 	} else if (response['status'] === 'connected') {
 		$('article.login-request').addClass('hidden');
 		FB.api(
@@ -60,8 +62,10 @@ function statusChangeCallback (response) {
 						$('#btn_user').removeClass('hidden').html('¡Hola '+response.short_name+'!').trigger('click');
 						$('.modal-body #name', '#user_data').val(response.name);
 						$('.modal-body #email', '#user_data').val(response.email);
+						ga('send', 'event', 'Usuarios', 'Registra', 'Crea cuenta');
 					} else if (data === 'crdE') {
 						console.log('Error al intentar crear usuario');
+						ga('send', 'event', 'Usuarios', 'Error', 'Error crea cuenta');
 					} else if (data.id_facebook) {
 						$('#btn_user').removeClass('hidden').html('¡Hola '+response.short_name+'!')<
 						$('.modal-body #name', '#user_data').val(data.name);
@@ -80,6 +84,7 @@ $(document).ready(function(){
 	btn			 		= $("#btn_user"),
 	span		 		= modal.find(".close");
 	btn.click(function(){
+		ga('send', 'event', 'Usuarios', 'Clic', 'Consulta cuenta');
 		modal.css('display', 'block');
 	});
 	span.click(function(){
