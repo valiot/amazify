@@ -44,4 +44,8 @@ class PagesController < ApplicationController
 	def param_update_user
 		params.permit(:name, :email)
 	end
+
+	def og_link
+		@url				=	Article.find_by(id: params[:id]).link
+	end
 end
