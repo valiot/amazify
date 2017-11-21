@@ -16,10 +16,10 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  post 'registra_face' => 'pages#registra_face', as: 'registra_usuario'
-  post 'update_user' => 'pages#update_user', as: 'actualiza_info_usuario'
+  post 'registra_face' => 'users#registra_face', as: 'registra_usuario'
+  post 'update_user' => 'users#update_user', as: 'actualiza_info_usuario'
+  get 'article' => 'users#article', as: 'track_link'
 
-  get 'og_link' => 'pages#og_link', as: 'track_link'
   get 'issues/latest' => 'issues#latest', as: 'issue_latest'
 
   resources :issues, only: [:index, :show]

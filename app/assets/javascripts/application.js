@@ -58,20 +58,21 @@ function statusChangeCallback (response) {
 						email				:	response.email
 					}
 				).done(function(data) {
-					if (data === 'crd') {
-						$('#btn_user').removeClass('hidden').html('¡Hola '+response.short_name+'!').trigger('click');
+					if (!data) {
+						$('#btn_user').removeClass('hidden').html('¡Hola '+response.short_name+'!');
 						$('.modal-body #name', '#user_data').val(response.name);
 						$('.modal-body #email', '#user_data').val(response.email);
+						$('.modal-header h2 span', '#user_data').html(response.short_name);
+						$('#btn_user').trigger('click');
 						ga('send', 'event', 'Usuarios', 'Registra', 'Crea cuenta');
-					} else if (data === 'crdE') {
-						console.log('Error al intentar crear usuario');
-						ga('send', 'event', 'Usuarios', 'Error', 'Error crea cuenta');
 					} else if (data.id_facebook) {
-						$('#btn_user').removeClass('hidden').html('¡Hola '+response.short_name+'!')<
+						$('#btn_user').removeClass('hidden').html('¡Hola '+response.short_name+'!');
 						$('.modal-body #name', '#user_data').val(data.name);
 						$('.modal-body #email', '#user_data').val(data.email);
+						$('.modal-header h2 span', '#user_data').html(response.short_name);
+					} else {
+						ga('send', 'event', 'Usuarios', 'Error', 'Error crea cuenta: '+data);
 					}
-					$('.modal-header h2 span', '#user_data').html(response.short_name);
 				});
 			}
 		);

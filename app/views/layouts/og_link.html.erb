@@ -12,7 +12,6 @@
 		<meta property="fb:app_id" content="830165073831075" />
 	</head>
 	<body>
-		<%= @mew %>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS8V9DV"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -45,9 +44,7 @@
       js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11&appId=830165073831075';
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-    <!-- End Facebook Login -->
+		<!-- End Facebook Login -->
+		<%= yield %>
 	</body>
 </html>
-<script>
-  window.location.href = "<%= @url %>";
-</script>
