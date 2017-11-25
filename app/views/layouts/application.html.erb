@@ -17,7 +17,7 @@
     <!-- End Google Tag Manager -->
 
     <!-- Facebook metas -->
-    <meta property="og:url"                content="http://amazify.co" />
+    <meta property="og:url"                content="https://amazify.co" />
     <meta property="og:title"              content="La mejor plataforma para el crecimiento de emprendedores." />
     <meta property="og:description"        content="Descubre los mejores artículos para aprender acerca de cómo hacer crecer tu proyecto y startup." />
     <meta property="og:image"              content="<%= image_url('amazify-fb.png') %>" />
@@ -64,6 +64,46 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS8V9DV"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <%= yield%>
+    <!-- Facebook Login -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '830165073831075',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.11'
+        });
+        FB.AppEvents.logPageView();
+        checkLoginState();
+      };
+      (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/es_LA/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11&appId=830165073831075';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- End Facebook Login -->
+    <div class="fb-messengermessageus"
+      messenger_app_id="830165073831075"
+      page_id="620468924766512"
+      color="blue"
+      size="xlarge"
+      style="
+        position: fixed;
+        bottom: 58px;
+        right: 31px;
+        z-index: 15">
+    </div>
+    <%= yield %>
   </body>
 </html>
