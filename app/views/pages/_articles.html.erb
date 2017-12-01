@@ -1,6 +1,6 @@
 <% @articles.each do |article| %>
   <article class="article">
-    <span class="article-readTime"><%= article.reading_time %> minutos</span>
+    <span class="article-readTime"><%= article.reading_time %> minutos #<%= article.tags %></span>
     <a href="#0" class="article-category"><%= article.category.name.titleize %></a>
     <a href="/article?id=<%= article.id %>" class="article-link" target="_blank">
       <figure class="article-image">
