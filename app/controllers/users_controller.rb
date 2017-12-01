@@ -10,10 +10,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def param_user
-    params.permit(:name, :id_facebook, :email)
-  end
-
   def update_user
     @user = User.find_by(email: params[:email])
     if @user
@@ -23,16 +19,22 @@ class UsersController < ApplicationController
     end
   end
 
-  def param_update_user
-    params.permit(:name, :email)
-  end
-
   def article
     if params[:id]
       @url = Article.find(params[:id]).link
     else
       redirect_to "/"
     end
+  end
+
+  private
+
+  def param_user
+    params.permit(:name, :id_facebook, :email)
+  end
+
+  def param_update_user
+    params.permit(:name, :email)
   end
 
 end
