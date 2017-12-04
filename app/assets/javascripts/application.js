@@ -65,7 +65,9 @@ function statusChangeCallback (response) {
             $('.modal-body #email', '#user_data').val(response.email);
             $('.modal-header h2 span', '#user_data').html(response.short_name);
             $('#btn_user').trigger('click');
-            ga('send', 'event', 'Usuarios', 'Registra', 'Crea cuenta');
+            ga('send', 'event', 'Usuarios', 'Registra', 'Crea cuenta', {
+              nonInteraction: true
+            });
           } else if (data.id_facebook) {
             $('#btn_user').removeClass('hidden').html('¡Hola '+response.short_name+'!');
             $('.modal-body #facebook', '#user_data').val(data.id_facebook);
@@ -82,8 +84,14 @@ function statusChangeCallback (response) {
                 hideSubscribe();
               }
             });
+          } else if (!data.id_facebook) {
+            ga('send', 'event', 'Usuarios', 'Registra', 'No registra', {
+              nonInteraction: true
+            });
           } else {
-            ga('send', 'event', 'Usuarios', 'Error', 'Error crea cuenta: '+data);
+            ga('send', 'event', 'Usuarios', 'Error', 'Error crea cuenta: '+data, {
+              nonInteraction: true
+            });
           }
         });
       }
