@@ -11,9 +11,13 @@ class UsersController < ApplicationController
   end
 
   def update_user
-    @user = User.find_by(email: params[:email])
+    @user = User.find_by(id_facebook: params[:id_facebook])
     if @user
-      User.update(param_update_user)
+      if @user.email != params[:email]
+        subscribe_newsletter('unsubscribed', @user.email, @user.name)
+        subscribe_newsletter()
+      end
+      User.update(param_user)
       @new_user = User.find_by(email: params[:email])
       json_response(@new_user)
     end
@@ -27,14 +31,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def check_newsletter
+    ENV['MAILCHIMP_API_KEY'] = '598d13870c542a7d1cab065f003c80cb-us16'
+    @member = Mailchimp.connect.lists('5f6a2fb090').members(params[:email])
+    render :'text' => @member
+  end
+
+  def subscribe_newsletter(status = 'subscribed', email = params[:email], name = params[:name])
+    Mailchimp.connect.lists('5f6a2fb090').members.create_or_update(
+      email_address: email,
+      name: name,
+      status: status
+    )
+  end
+
   private
 
   def param_user
     params.permit(:name, :id_facebook, :email)
-  end
-
-  def param_update_user
-    params.permit(:name, :email)
   end
 
 end

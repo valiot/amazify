@@ -807,6 +807,37 @@ article.login-request > div {
   width: 282px;
 }
 
+#btn-socialmedia_1 {
+  left: calc(50% - (95% / 2));
+  position: absolute;
+  top: 2rem;
+  cursor: pointer;
+}
+@media only screen and (min-width: 1100px) {
+  #btn-socialmedia_1 {
+    display: none;
+  }
+}
+@media only screen and (max-width: 750px) {
+  #btn-socialmedia_1 {
+    display: none;
+  }
+}
+
+#btn-socialmedia_2 {
+  display: none;
+}
+@media only screen and (min-width: 1100px) {
+  #btn-socialmedia_2 {
+    display: block;
+  }
+}
+@media only screen and (max-width: 750px) {
+  #btn-socialmedia_2 {
+    display: block;
+  }
+}
+
 #btn_user {
   right: calc(50% - (95% / 2));
   line-height: 40px;
@@ -824,7 +855,7 @@ article.login-request > div {
   display: none;
   position: fixed;
   z-index: 15;
-  padding-top: 100px;
+  padding-top: 30px;
   left: 0;
   top: 0;
   width: 100%;
@@ -923,16 +954,22 @@ article.login-request > div {
   height: 21px;
   opacity: 1;
 }
-
-.modal-footer {
-  padding: 2px 16px;
-  color: white;
-}
-.modal-footer button{
+.modal-body button{
   margin: 46px auto 26px;
   display: block;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.modal-footer {
+  padding: 2px 16px 32px;
+  color: white;
+  background: linear-gradient(90deg, #6377b8 0, #734c98 100%);
+  text-align: center;
+  border-radius: 0px 0px 5px 5px;
+}
+.modal-footer > h2{
+  font-weight: 500;
 }
 
 .twitter-share-button {
