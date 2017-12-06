@@ -72,6 +72,7 @@ function statusChangeCallback (response) {
             ga('send', 'event', 'Usuarios', 'Registra', 'Crea cuenta', {
               nonInteraction: true
             });
+            hideSubscribe();
           } else if (data.id_facebook) {
             $('#btn_user').removeClass('hidden').html('¡Hola '+response.short_name+'!');
             $('.modal-body #facebook', '#user_data').val(data.id_facebook);
