@@ -39,10 +39,14 @@ function statusChangeCallback (response) {
   console.log(response['status']);
   if (response['status'] === 'not_authorized') {
     //FB.login();
-    ga('send', 'event', 'Usuarios', 'Visita', 'Sin cuenta');
+    ga('send', 'event', 'Usuarios', 'Visita', 'Sin cuenta', {
+      nonInteraction: true
+    });
   } else if (response['status'] !== 'connected') {
     $('article.login-request').removeClass('hidden');
-    ga('send', 'event', 'Usuarios', 'Visita', 'Sin Facebook');
+    ga('send', 'event', 'Usuarios', 'Visita', 'Sin Facebook', {
+      nonInteraction: true
+    });
   } else if (response['status'] === 'connected') {
     $('article.login-request').addClass('hidden');
     FB.api(
@@ -84,16 +88,19 @@ function statusChangeCallback (response) {
                 hideSubscribe();
               }
             });
-          } else if (!data.id_facebook) {
-            ga('send', 'event', 'Usuarios', 'Registra', 'No registra', {
-              nonInteraction: true
-            });
           } else {
             ga('send', 'event', 'Usuarios', 'Error', 'Error crea cuenta: '+data, {
               nonInteraction: true
             });
           }
         });
+        $.post(
+          '/user_assistance',
+          {
+            id_facebook : response.id,
+            from        : window.location.pathname + window.location.search
+          }
+        );
       }
     );
   }

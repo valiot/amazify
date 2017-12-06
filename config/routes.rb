@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   post 'registra_face' => 'users#registra_face', as: 'create_user'
   post 'update_user' => 'users#update_user', as: 'update_user_info'
+  post 'user_assistance' => 'users#user_assistance', as: 'user_assistance'
   post 'check_newsletter' => 'users#check_newsletter', as: 'check_subscription'
   post 'subscribe_newsletter' => 'users#subscribe_newsletter', as: 'new_subscription'
   get 'article' => 'users#article', as: 'track_link'

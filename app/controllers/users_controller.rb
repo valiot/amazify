@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   layout 'og_link', only: [:article]
+  protect_from_forgery :except => [:user_assistance]
 
   def registra_face
     @user = User.find_by(id_facebook: params[:id_facebook])
@@ -21,6 +22,11 @@ class UsersController < ApplicationController
       @new_user = User.find_by(email: params[:email])
       json_response(@new_user)
     end
+  end
+
+  def user_assistance
+    id_user = User.find_by(id_facebook: params[:id_facebook]).id
+    UsersAssistance.create(id_user: id_user, from: params[:from])
   end
 
   def article
