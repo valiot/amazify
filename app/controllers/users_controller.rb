@@ -8,6 +8,7 @@ class UsersController < ApplicationController
       json_response(@user)
     else
       User.create(param_user)
+      subscribe_newsletter()
     end
   end
 

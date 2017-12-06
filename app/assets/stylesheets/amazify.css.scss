@@ -931,8 +931,9 @@ article.login-request > div {
 }
 .modal-body > input {
   border-radius: 5px;
-  background-color: #e9b54c;
-  color: #fff;
+  border: solid 3px #e9b54c;
+  background-color: #fff;
+  color: #2c2c2c;
   cursor: pointer;
 }
 .modal-body > p {

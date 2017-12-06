@@ -106,7 +106,7 @@ function statusChangeCallback (response) {
   }
 }
 function hideSubscribe() {
-  $('div.newsletter').add('.modal-footer').add('.to-newsletter').remove();
+  $('.modal-footer').remove();
   $('.modal').css('padding-top', '100px');
 }
 $(document).ready(function(){
