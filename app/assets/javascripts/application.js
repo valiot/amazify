@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require amazify.min
 //= require turbolinks
+//= require social
 
 $.fn.scrollPosReaload = function(){
   if (localStorage) {
