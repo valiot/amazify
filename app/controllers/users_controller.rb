@@ -38,13 +38,12 @@ class UsersController < ApplicationController
   end
 
   def check_newsletter
-    ENV['MAILCHIMP_API_KEY'] = '598d13870c542a7d1cab065f003c80cb-us16'
-    @member = Mailchimp.connect.lists('5f6a2fb090').members(params[:email])
+    @member = Mailchimp.connect.lists(ENV['MAILCHIMP_LIST_ID']).members(params[:email])
     render :'text' => @member
   end
 
   def subscribe_newsletter(status = 'subscribed', email = params[:email], name = params[:name])
-    Mailchimp.connect.lists('5f6a2fb090').members.create_or_update(
+    Mailchimp.connect.lists(ENV['MAILCHIMP_LIST_ID']).members.create_or_update(
       email_address: email,
       name: name,
       status: status
