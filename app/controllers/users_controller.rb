@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   layout 'og_link', only: [:article]
-  protect_from_forgery :except :user_assistance
+  protect_from_forgery :except =>[:user_assistance]
 
   def registra_face
     @user = User.find_by(id_facebook: params[:id_facebook])
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   def check_newsletter
     @member = Mailchimp.connect.lists(ENV['MAILCHIMP_LIST_ID']).members(params[:email])
-    render :text => @member
+    render plain: @member
   end
 
   def subscribe_newsletter(status = 'subscribed', email = params[:email], name = params[:name])
