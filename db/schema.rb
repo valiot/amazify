@@ -61,10 +61,11 @@ ActiveRecord::Schema.define(version: 20171204184542) do
   end
 
   create_table "users_assistances", force: :cascade do |t|
-    t.integer  "id_user"
+    t.integer  "users_id"
     t.text     "from"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_users_assistances_on_users_id", using: :btree
   end
 
   add_foreign_key "articles", "categories"
