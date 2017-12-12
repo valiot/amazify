@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   layout 'og_link', only: [:article]
-  protect_from_forgery :except =>[:user_assistance]
+  protect_from_forgery except: [:user_assistance]
 
   def registra_face
     @user = User.find_by(id_facebook: params[:id_facebook])
