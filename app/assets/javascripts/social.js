@@ -64,17 +64,6 @@ window.fbAsyncInit = function() {
     xfbml      : true,
     version    : 'v2.11'
   });
-  FB.api(
-    "/620468924766512_1248263245320407",
-    function (response) {
-      console.log('NOPE');
-      console.log(response);
-      if (response && !response.error) {
-        console.log('YAS');
-        console.log(response);
-      }
-    }
-  );
   FB.AppEvents.logPageView();
   checkLoginState();
 };
