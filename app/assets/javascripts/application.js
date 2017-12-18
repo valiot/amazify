@@ -56,7 +56,7 @@ function statusChangeCallback (response) {
       {"fields":"id,name,email,short_name"},
       function(response) {
         $.post(
-          '/registra_face',
+          '/register_face',
           {
             id_facebook	:	response.id,
             name				:	response.name,

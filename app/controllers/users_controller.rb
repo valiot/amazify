@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   layout 'og_link', only: [:article]
   protect_from_forgery except: :user_assistance
 
-  def registra_face
+  def register_face
     @user = User.find_by(id_facebook: params[:id_facebook])
     if @user
       json_response(@user)
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user
       if @user.email != params[:email]
         subscribe_newsletter('unsubscribed', @user.email, @user.name)
-        subscribe_newsletter()
+        subscribe_newsletter
       end
       User.update(param_user)
       @new_user = User.find_by(email: params[:email])
