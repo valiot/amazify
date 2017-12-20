@@ -16,9 +16,14 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  post 'registra_face' => 'users#registra_face', as: 'registra_usuario'
-  post 'update_user' => 'users#update_user', as: 'actualiza_info_usuario'
+  post 'register_face' => 'users#register_face', as: 'create_user'
+  post 'update_user' => 'users#update_user', as: 'update_user_info'
+  post 'user_assistance' => 'users#user_assistance', as: 'user_assistance'
+  post 'check_newsletter' => 'users#check_newsletter', as: 'check_subscription'
+  post 'subscribe_newsletter' => 'users#subscribe_newsletter', as: 'new_subscription'
   get 'article' => 'users#article', as: 'track_link'
+
+  get 'aviso_de_privacidad' => 'pages#privacy_policy', as: 'privacy_policy'
 
   get 'issues/latest' => 'issues#latest', as: 'issue_latest'
 

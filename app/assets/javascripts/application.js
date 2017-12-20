@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require amazify.min
 //= require turbolinks
-//= require link_facebook
+//= require social
 
 $.fn.scrollPosReaload = function(){
   if (localStorage) {
@@ -40,10 +40,14 @@ function statusChangeCallback (response) {
   console.log(response['status']);
   if (response['status'] === 'not_authorized') {
     //FB.login();
-    ga('send', 'event', 'Usuarios', 'Visita', 'Sin cuenta');
+    ga('send', 'event', 'Usuarios', 'Visita', 'Sin cuenta', {
+      nonInteraction: true
+    });
   } else if (response['status'] !== 'connected') {
     $('article.login-request').removeClass('hidden');
-    ga('send', 'event', 'Usuarios', 'Visita', 'Sin Facebook');
+    ga('send', 'event', 'Usuarios', 'Visita', 'Sin Facebook', {
+      nonInteraction: true
+    });
   } else if (response['status'] === 'connected') {
     $('article.login-request').addClass('hidden');
     FB.api(
@@ -52,7 +56,7 @@ function statusChangeCallback (response) {
       {"fields":"id,name,email,short_name"},
       function(response) {
         $.post(
-          '/registra_face',
+          '/register_face',
           {
             id_facebook	:	response.id,
             name				:	response.name,
@@ -61,25 +65,76 @@ function statusChangeCallback (response) {
         ).done(function(data) {
           if (!data) {
             $('#btn_user').removeClass('hidden').html('¡Hola '+response.short_name+'!');
+            $('.modal-body #facebook', '#user_data').val(response.id);
             $('.modal-body #name', '#user_data').val(response.name);
             $('.modal-body #email', '#user_data').val(response.email);
             $('.modal-header h2 span', '#user_data').html(response.short_name);
             $('#btn_user').trigger('click');
-            ga('send', 'event', 'Usuarios', 'Registra', 'Crea cuenta');
+            ga('send', 'event', 'Usuarios', 'Registra', 'Crea cuenta', {
+              nonInteraction: true
+            });
+            hideSubscribe();
           } else if (data.id_facebook) {
             $('#btn_user').removeClass('hidden').html('¡Hola '+response.short_name+'!');
+            $('.modal-body #facebook', '#user_data').val(data.id_facebook);
             $('.modal-body #name', '#user_data').val(data.name);
             $('.modal-body #email', '#user_data').val(data.email);
             $('.modal-header h2 span', '#user_data').html(response.short_name);
+            $.post(
+              '/check_newsletter',
+              {
+                email	:	$('#email', '.modal-body').val()
+              }
+            ).done(function(email) {
+              if (email !== '') {
+                hideSubscribe();
+              }
+            });
           } else {
-            ga('send', 'event', 'Usuarios', 'Error', 'Error crea cuenta: '+data);
+            ga('send', 'event', 'Usuarios', 'Error', 'Error crea cuenta: '+data, {
+              nonInteraction: true
+            });
           }
         });
+        $.post(
+          '/user_assistance',
+          {
+            id_facebook : response.id,
+            from        : window.location.pathname + window.location.search
+          }
+        );
       }
     );
   }
 }
+function hideSubscribe() {
+  $('.modal-footer').remove();
+  $('.modal').css('padding-top', '100px');
+}
 $(document).ready(function(){
+  function checkEmails(user, mailchimp) {
+    console.log(user+'_'+mailchimp);
+  }
+  function subscribe(name, email) {
+    $.post(
+      '/subscribe_newsletter',
+      {
+        name  : name,
+        email : email
+      }
+    ).done(function(data){
+      hideSubscribe();
+    });
+  }
+  $('.modal-footer #user_subscribe', '#user_data').click(function(){
+    var
+    thName  = $('.modal-body #name', '#user_data').val(),
+    thEmail = $('.modal-body #email', '#user_data').val();
+    subscribe(thName, thEmail);
+  });
+  $('.to-newsletter').click(function(){
+    window.scrollTo(0,document.body.scrollHeight);
+  });
   //Modal
   var
   modal				= $('#user_data'),
@@ -101,6 +156,7 @@ $(document).ready(function(){
     $('#lb_name', '.modal-body').add('#lb_email', '.modal-body').removeClass('active');
     var
     thVerif		= 0,
+    thFacebook= $('#facebook', '.modal-body').val(),
     thName 		= $('#name', '.modal-body').val(),
     thEmail		= $('#email', '.modal-body').val(),
     isEmail		=	/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -116,6 +172,7 @@ $(document).ready(function(){
       $.post(
         'update_user',
         {
+          id_facebook:thFacebook,
           name	:	thName,
           email	:	thEmail
         }

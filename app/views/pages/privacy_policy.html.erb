@@ -1,0 +1,66 @@
+<!-- header of home-->
+<header class="mainHeader">
+  <a href="/" class="header-logo">
+    <%= image_tag 'logo-white.svg' %>
+  </a>
+</header>
+<a id="btn_user" class="hidden">Hola</a>
+<main class="main" id="main">
+  <h1 class="title-main">La mejor plataforma con contenido  de <span>emprendedores para emprendedores</span></h1>
+  <!-- <a href="#socialmedia" class="btn btn--secondary">Subscríbete</a> -->
+</main>
+<!-- header of home-->
+<section class="container">
+	<h2 class="articles-title">Política de Privacidad</h2>
+	<p>Amazify no pasara los detalles de los clientes o visitantes del sitio a terceros. Amazify tomará todas las precauciones razonables para asegurar que los detalles presentados a través de nuestros formularios web se mantiene segura. Los datos que envíe a Amazify se mantienen sólo para procesar los pedidos. Usted tiene el derecho de retener información personal a Amazify, que no se requiera como parte de la transacción.<br><br>
+	Usted puede solicitar una copia de cualquier información que Amazify pueda tener sobre usted mediante el envío de una carta de solicitud oficial a Amazify.<br><br>
+	Si usted encuentra cualquier inexactitud, serán eliminados o corregidos inmediatamente por Amazify a su solicitud. Cualquier información personal que puede tener Amazify se tendrá de forma segura.<br><br>
+	Amazify no se comunicará con usted por correo electrónico para notificarle sobre cambios importantes en las funciones del sitio web, nuevos servicios y ofertas especiales que pensamos te puedan interesar, a menos que usted haya dado permiso explícito que Amazify a hacerlo.<br><br>
+	Usted tiene el derecho de rechazar cualquier e-mail marketing de Amazify.<br><br>
+	Amazify monitorea los patrones de tráfico del sitio web y su uso para ayudar a desarrollar el diseño del sito web de Amazify.<br><br>
+	Amazify puede utilizar la tecnología para rastrear los patrones y el comportamiento de los visitantes de la página web Amazify. Esto puede incluir el uso de cookies que se almacenan en su ordenador. Usted puede modificar la configuración del navegador para impedir que esto suceda.<br><br>
+	La información recolectada por Amazify de esta manera se puede utilizar para identificarle a menos que modifique la configuración del navegador. Si usted tiene alguna pregunta sobre nuestra política de privacidad, nos puede contactar en hello@amazify.co</p>
+</section>
+<!-- footer of home-->
+<footer class="footer">
+  <div class="copyrights">
+    <div class="socialmedia" id="socialmedia">
+      <a href="https://www.facebook.com/amazify.co/" class="social-link" target="_blank">
+        <%= image_tag 'icon-facebook.svg', alt: 'Facebook' %>
+      </a>
+      <!-- <a href="#0" class="social-link" target="_blank">
+        <%= image_tag 'icon-twitter.svg', alt: 'Twitter' %>
+      </a> -->
+      <!-- <a href="#" class="social-link" target="_blank">
+        <%= image_tag 'icon-instagram.svg', alt: 'Instagram' %>
+      </a> -->
+    </div>
+
+    <p>Amazify.co - Todos los derechos reservados, 2017</p>
+
+    <a href="https://nochesdepitcheo.com/" class="powered-by">
+      <%= image_tag 'powered-by.svg', alt: 'Powered by Noches de Pitcheo' %>
+    </a>
+  </div>
+</footer>
+
+<div id="user_data" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>¡Hola <span></span>! En este momento puedes editar tu información para que recibas de la mejor forma todas nuestras sorpresas :)</h2>
+    </div>
+    <div class="modal-body">
+      <p>Tu nombre:</p>
+      <input id="name" type="text" required/>
+      <label><em id="lb_name">Debes agregar tu nombre :)</em></label>
+      <p>Tu email:</p>
+      <input id="email" type="email" required/>
+      <label><em id="lb_email">Debes agregar un email válido :)</em></label>
+    </div>
+    <div class="modal-footer">
+      <button id="update_data" type="button" class="button">Actualizar datos</button>
+    </div>
+  </div>
+</div>

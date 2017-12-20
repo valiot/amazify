@@ -14,4 +14,8 @@ class PagesController < ApplicationController
       format.js
     end
   end
+
+  def privacy_policy
+  end
+
 end

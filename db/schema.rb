@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117025936) do
+ActiveRecord::Schema.define(version: 20171204184542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 20171117025936) do
     t.index ["issue_id"], name: "index_articles_on_issue_id", using: :btree
     t.index ["link"], name: "index_articles_on_link", unique: true, using: :btree
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
+  end
+
+  create_table "assistances", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "from"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_assistances_on_user_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -63,4 +71,5 @@ ActiveRecord::Schema.define(version: 20171117025936) do
   add_foreign_key "articles", "categories"
   add_foreign_key "articles", "issues"
   add_foreign_key "articles", "users"
+  add_foreign_key "assistances", "users"
 end

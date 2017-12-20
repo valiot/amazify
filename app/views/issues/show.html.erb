@@ -185,11 +185,11 @@
 
           var fullUrl;
           if (idParts[2] === "i") { // instapaper
-              fullUrl = "http://www.instapaper.com/hello2?url=" + encodeURI(linkElem.attr("data-url")) + "&title=" + encodeURI(linkElem.text());
+              fullUrl = "https://www.instapaper.com/hello2?url=" + encodeURI(linkElem.attr("data-url")) + "&title=" + encodeURI(linkElem.text());
           } else if (idParts[2] === "p") { //pocket
               fullUrl = "https://getpocket.com/save?url=" + encodeURI(linkElem.attr("data-url")) + "&title=" + encodeURI(linkElem.text());
           } else { // readability
-              fullUrl = "http://www.readability.com/save?url=" + encodeURI(linkElem.attr("data-url"));
+              fullUrl = "https://www.readability.com/save?url=" + encodeURI(linkElem.attr("data-url"));
           }
 
           //console.log(fullUrl);

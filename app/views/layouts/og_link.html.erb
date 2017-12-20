@@ -1,50 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MS8V9DV');</script>
-    <!-- End Google Tag Manager -->
 		<meta property="og:url" content="<%= @url %>" />
-		<meta property="fb:app_id" content="830165073831075" />
+    <meta property="fb:app_id" content="390511271369342" />
+    <%= javascript_include_tag "og_link", 'data-turbolinks-track' => 'reload' %>
 	</head>
 	<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS8V9DV"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <!-- Facebook Login -->
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '830165073831075',
-          cookie     : true,
-          xfbml      : true,
-          version    : 'v2.11'
-        });
-        FB.AppEvents.logPageView();
-        //checkLoginState();
-      };
-      (function(d, s, id){
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) {return;}
-          js = d.createElement(s); js.id = id;
-          js.src = "https://connect.facebook.net/es_LA/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11&appId=830165073831075';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-		<!-- End Facebook Login -->
 		<%= yield %>
-	</body>
+  </body>
 </html>
