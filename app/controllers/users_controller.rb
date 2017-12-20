@@ -26,8 +26,8 @@ class UsersController < ApplicationController
   end
 
   def user_assistance
-    users_id = User.find_by(id_facebook: params[:id_facebook]).id
-    UsersAssistance.create(users_id: users_id, from: params[:from])
+    user = User.find_by(id_facebook: params[:id_facebook])
+    Assistance.create(user: user, from: params[:from])
   end
 
   def article

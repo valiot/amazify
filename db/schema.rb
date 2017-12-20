@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20171204184542) do
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
+  create_table "assistances", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "from"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_assistances_on_user_id", using: :btree
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -60,15 +68,8 @@ ActiveRecord::Schema.define(version: 20171204184542) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
-  create_table "users_assistances", force: :cascade do |t|
-    t.integer  "users_id"
-    t.text     "from"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_users_assistances_on_users_id", using: :btree
-  end
-
   add_foreign_key "articles", "categories"
   add_foreign_key "articles", "issues"
   add_foreign_key "articles", "users"
+  add_foreign_key "assistances", "users"
 end
