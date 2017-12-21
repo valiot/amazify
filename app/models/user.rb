@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  #has_secure_password
+  has_secure_password
   has_many :articles
   has_many :assistances
   validates_uniqueness_of :email

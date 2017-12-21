@@ -7,7 +7,9 @@ class UsersController < ApplicationController
     if @user
       json_response(@user)
     else
-      User.create(param_user)
+      data = param_user
+      data[:password] = params[:id_facebook]
+      User.create(data)
       subscribe_newsletter
     end
   end
