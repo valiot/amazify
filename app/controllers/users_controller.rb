@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       json_response(@user)
     else
       data = param_user
-      data[:password] = params[:id_facebook]
+      data[:password] = ENV['SECURE_PASSWORD']
       User.create(data)
       subscribe_newsletter
     end
