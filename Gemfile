@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.2'
 
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '3.2.2'
 gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'metainspector'
 gem 'pundit'
