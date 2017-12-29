@@ -80,6 +80,7 @@ class Article < ActiveRecord::Base
     uri = URI.parse(url)
     filename, extension = uri.path.split('/')[-1].split('.')[-2..-1]
     service = S3::Service.new(access_key_id: ENV['AWS_KEY'],
+                              use_ssl:0,
                               secret_access_key: ENV['AWS_SECRET'])
 
     bucket = service.buckets.find(ENV['S3_BUCKET'])

@@ -29,6 +29,13 @@
     </div>
     <%=f.error_span(:category_id) %>
   </div>
+  <div class="form-group">
+    <%= f.label :tags, class: 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.select :tags, Article.tags.keys {|tag, i| [tag, tag]}, {}, class: 'form-control' %>
+    </div>
+    <%=f.error_span(:tags) %>
+  </div>
 
   <% if defined?(edit) && edit %>
   <div class="form-group">
