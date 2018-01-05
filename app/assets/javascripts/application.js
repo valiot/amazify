@@ -112,7 +112,7 @@ function hideSubscribe() {
   $('.modal-footer').remove();
   $('.modal').css('padding-top', '100px');
 }
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
   function checkEmails(user, mailchimp) {
     console.log(user+'_'+mailchimp);
   }
