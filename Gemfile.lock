@@ -74,7 +74,7 @@ GEM
     erubi (1.7.0)
     erubis (2.7.0)
     execjs (2.7.0)
-    faraday (0.13.1)
+    faraday (0.14.0)
       multipart-post (>= 1.2, < 3)
     faraday-cookie_jar (0.0.6)
       faraday (>= 0.7.4)
@@ -93,7 +93,7 @@ GEM
     htmlentities (4.3.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (0.9.1)
+    i18n (0.9.3)
       concurrent-ruby (~> 1.0)
     jquery-datatables-rails (3.3.0)
       actionpack (>= 3.1)
@@ -159,7 +159,7 @@ GEM
     parallel (1.12.1)
     parser (2.4.0.2)
       ast (~> 2.3)
-    pg (1.0.0)
+    pg (0.21.0)
     powerpack (0.1.1)
     premailer (1.11.1)
       addressable
@@ -168,9 +168,9 @@ GEM
     premailer-rails (1.10.1)
       actionmailer (>= 3, < 6)
       premailer (~> 1.7, >= 1.7.9)
-    proxies (0.2.2)
+    proxies (0.2.3)
     public_suffix (3.0.1)
-    puma (3.11.0)
+    puma (3.11.2)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.3)
@@ -217,8 +217,9 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.9.0)
-    s3 (0.3.25)
-      proxies (~> 0.2.0)
+    s3 (0.3.26)
+      addressable
+      proxies
     sass (3.5.5)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -258,7 +259,7 @@ GEM
       railties (>= 3.1)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    uglifier (4.1.3)
+    uglifier (4.1.4)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -284,7 +285,7 @@ DEPENDENCIES
   mailchimp_api_v3
   metainspector
   mini_magick
-  pg
+  pg (~> 0.21)
   premailer-rails
   puma
   pundit
