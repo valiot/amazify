@@ -1,5 +1,5 @@
 require 'open-uri'
-class Article < ActiveRecord::Base
+class Article < ApplicationRecord
   belongs_to :category
   belongs_to :user
   belongs_to :issue

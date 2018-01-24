@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204184542) do
+ActiveRecord::Schema.define(version: 20180123231303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,20 @@ ActiveRecord::Schema.define(version: 20171204184542) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "podcasts", force: :cascade do |t|
+    t.integer  "episode"
+    t.string   "video_link"
+    t.string   "audio_link"
+    t.string   "image"
+    t.text     "text"
+    t.integer  "tags"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_podcasts_on_category_id", using: :btree
+    t.index ["episode"], name: "index_podcasts_on_episode", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
@@ -72,4 +86,5 @@ ActiveRecord::Schema.define(version: 20171204184542) do
   add_foreign_key "articles", "issues"
   add_foreign_key "articles", "users"
   add_foreign_key "assistances", "users"
+  add_foreign_key "podcasts", "categories"
 end
