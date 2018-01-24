@@ -14,7 +14,7 @@ gem 'puma'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.4'
 # Use pg as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 0.21'
 # Use Mailchimp API v3
 gem 'mailchimp_api_v3'
 # Use SCSS for stylesheets
