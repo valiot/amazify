@@ -2,6 +2,7 @@ class CreatePodcast < ActiveRecord::Migration[5.0]
   def change
     create_table :podcasts do |t|
       t.integer :episode, index: true, unique: true
+<<<<<<< HEAD
       t.string :title, index: true, unique: true
       t.string :slug, index: true, unique: true
       t.string :video_link, unique: true
@@ -17,6 +18,14 @@ class CreatePodcast < ActiveRecord::Migration[5.0]
       t.integer :tags, default: 0
       t.belongs_to :category, index: true, foreign_key: true
       t.belongs_to :user, foreign_key: true
+=======
+      t.string :video_link
+      t.string :audio_link
+      t.string :image
+      t.text :text
+      t.integer :tags
+      t.belongs_to :category, index: true, foreign_key: true
+>>>>>>> Add postcast
 
       t.timestamps
     end

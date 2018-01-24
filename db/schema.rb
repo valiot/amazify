@@ -99,5 +99,8 @@ ActiveRecord::Schema.define(version: 20180123231303) do
   add_foreign_key "articles", "users"
   add_foreign_key "assistances", "users"
   add_foreign_key "podcasts", "categories"
+<<<<<<< HEAD
   add_foreign_key "podcasts", "users"
+=======
+>>>>>>> Add postcast
 end
