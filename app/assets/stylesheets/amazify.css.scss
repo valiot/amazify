@@ -793,6 +793,7 @@ body {
 }
 article.login-request {
   position: fixed;
+  height: 100px;
   bottom: 0px;
   background: #FFF;
   width: 100%;
@@ -800,6 +801,7 @@ article.login-request {
 }
 article.login-request > p {
   text-align: center;
+  margin: 10px 0px;
   color: rgb(99, 119, 184);
   font-size: 1.5rem;
   font-weight: 700;
