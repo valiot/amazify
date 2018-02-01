@@ -54,7 +54,7 @@ function statusChangeCallback (response) {
     FB.api(
       '/me',
       'GET',
-      {"fields":"id,name,email,short_name"},
+      {"fields":"id,name,email,short_name,gender,location"},
       function(response) {
         $.post(
           '/register_face',
