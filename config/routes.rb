@@ -10,9 +10,13 @@ Rails.application.routes.draw do
     post 'articles/approve/:id' => 'articles#approve', as: 'approve_article'
     post 'articles/reject/:id' => 'articles#reject', as: 'reject_article'
     get 'articles/unauthorized' => 'articles#unauthorized', as: 'unauthorized'
+    get 'podcasts/new' => 'podcasts#new', as: 'new_podcasts'
+    post 'podcasts/approve/:id' => 'podcasts#approve', as: 'approve_podcast'
+    post 'podcasts/reject/:id' => 'podcasts#reject', as: 'reject_podcast'
     post 'sessions/' => 'sessions#create'
 
     resources :articles
+    resources :podcasts
     resources :categories
   end
 

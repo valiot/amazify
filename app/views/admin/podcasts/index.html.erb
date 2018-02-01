@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>Podcasts <%= link_to 'New', new_admin_podcast_path, class: 'btn btn-primary' %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Episode</th>
+      <th>Title</th>
+      <th>Video link</th>
+      <th>Audio link</th>
+      <th>Category</th>
+      <th>Tags</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @podcasts.each do |podcast| %>
+      <tr>
+        <td><%= link_to podcast.episode, admin_podcast_path(podcast) %></td>
+        <td><%= podcast.title %></td>
+        <td><%= link_to "Video", podcast.video_link, target: :blank %></td>
+        <td><%= link_to "Audio", podcast.audio_link, target: :blank %></td>
+        <td><%= podcast.category.name %></td>
+        <td><%= podcast.tags %></td>
+        <td>
+          <% if podcast.status == "draft" %>
+            <%= link_to glyph(:ok), admin_approve_podcast_path(podcast),
+                remote: true, method: :post, class: 'btn btn-default btn-xs' %>
+            <%= link_to glyph(:remove), admin_reject_podcast_path(podcast),
+                remote: true, method: :post, class: 'btn btn-danger btn-xs' %>
+          <% else %>
+            <%= podcast.status %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
