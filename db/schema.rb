@@ -65,12 +65,13 @@ ActiveRecord::Schema.define(version: 20180123231303) do
     t.string   "image"
     t.string   "thumbnail"
     t.text     "text"
-    t.integer  "status",      default: 0
-    t.integer  "tags",        default: 0
+    t.integer  "reading_time", default: 30
+    t.integer  "status",       default: 0
+    t.integer  "tags",         default: 0
     t.integer  "category_id"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["category_id"], name: "index_podcasts_on_category_id", using: :btree
     t.index ["episode"], name: "index_podcasts_on_episode", using: :btree
     t.index ["user_id"], name: "index_podcasts_on_user_id", using: :btree

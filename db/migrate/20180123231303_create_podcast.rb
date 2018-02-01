@@ -8,6 +8,7 @@ class CreatePodcast < ActiveRecord::Migration[5.0]
       t.string :image
       t.string :thumbnail
       t.text :text
+      t.integer :reading_time, default: 30
       t.integer :status, default: 0
       t.integer :tags, default: 0
       t.belongs_to :category, index: true, foreign_key: true
