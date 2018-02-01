@@ -73,16 +73,9 @@ ActiveRecord::Schema.define(version: 20180127205155) do
     t.integer  "status",       default: 0
     t.integer  "tags",         default: 0
     t.integer  "category_id"
-<<<<<<< HEAD
     t.integer  "user_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-=======
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "thumbnail"
-    t.string   "title"
->>>>>>> AddTitleToPodcasts
     t.index ["category_id"], name: "index_podcasts_on_category_id", using: :btree
     t.index ["episode"], name: "index_podcasts_on_episode", using: :btree
     t.index ["slug"], name: "index_podcasts_on_slug", using: :btree
