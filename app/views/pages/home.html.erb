@@ -65,15 +65,16 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2>¡Hola <span></span>! En este momento puedes editar tu información para que recibas de la mejor forma todas nuestras sorpresas :)</h2>
+      <h2>¡Hola <span></span>!</h2>
     </div>
     <div class="modal-body">
+      <p>En este momento puedes editar tu información para que recibas de la mejor forma todas nuestras sorpresas :)</p>
       <input id="facebook" type="hidden"/>
-      <p>Tu nombre:</p>
-      <input id="name" type="text" required/>
+      <p data-form="name">Tu nombre:</p>
+      <input id="name" type="text" required data-form="name"/>
       <label><em id="lb_name">Debes agregar tu nombre :)</em></label>
-      <p>Tu email:</p>
-      <input id="email" type="email" required/>
+      <p data-form="email">Tu email:</p>
+      <input id="email" type="email" required data-form="email"/>
       <label><em id="lb_email">Debes agregar un email válido :)</em></label>
       <button id="update_data" type="button" class="button">Actualizar datos</button>
     </div>
