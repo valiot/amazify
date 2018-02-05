@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   post 'user_assistance' => 'users#user_assistance', as: 'user_assistance'
   post 'check_newsletter' => 'users#check_newsletter', as: 'check_subscription'
   post 'subscribe_newsletter' => 'users#subscribe_newsletter', as: 'new_subscription'
-  get 'article' => 'users#article', as: 'track_link'
+  get 'article' => 'users#article', as: 'track_article'
+  get 'podcast' => 'users#podcast', as: 'track_podcast'
 
   get 'aviso_de_privacidad' => 'pages#privacy_policy', as: 'privacy_policy'
 

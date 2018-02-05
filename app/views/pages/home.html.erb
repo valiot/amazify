@@ -15,12 +15,12 @@
     <h2 class="categories-title">Categories:</h2>
     <% if @slug %>
       <div class="filter-container">
-        <a class="btn btn--secondary" id="clear-filter" href="/">Clear filter</a>
+        <%= link_to "Clear filter", root_path, class: "btn btn--secondary", id: "clear-filter", 'data-turbolinks' => false %>
       </div>
     <% end %>
     <div class="categories-container">
       <% @categories.each do |category| %>
-        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category", id: "#{category.slug}" %>
+        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category", id: "#{category.slug}", 'data-turbolinks' => false %>
       <% end %>
     </div>
   </div>
