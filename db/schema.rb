@@ -60,12 +60,16 @@ ActiveRecord::Schema.define(version: 20180123231303) do
   create_table "podcasts", force: :cascade do |t|
     t.integer  "episode"
     t.string   "title"
+    t.string   "slug"
     t.string   "video_link"
     t.string   "audio_link"
     t.string   "image"
     t.string   "thumbnail"
     t.text     "text"
+    t.text     "guests"
+    t.text     "quote"
     t.integer  "reading_time", default: 30
+    t.date     "published"
     t.integer  "status",       default: 0
     t.integer  "tags",         default: 0
     t.integer  "category_id"
@@ -74,6 +78,8 @@ ActiveRecord::Schema.define(version: 20180123231303) do
     t.datetime "updated_at",                null: false
     t.index ["category_id"], name: "index_podcasts_on_category_id", using: :btree
     t.index ["episode"], name: "index_podcasts_on_episode", using: :btree
+    t.index ["slug"], name: "index_podcasts_on_slug", using: :btree
+    t.index ["title"], name: "index_podcasts_on_title", using: :btree
     t.index ["user_id"], name: "index_podcasts_on_user_id", using: :btree
   end
 
@@ -93,4 +99,5 @@ ActiveRecord::Schema.define(version: 20180123231303) do
   add_foreign_key "articles", "users"
   add_foreign_key "assistances", "users"
   add_foreign_key "podcasts", "categories"
+  add_foreign_key "podcasts", "users"
 end

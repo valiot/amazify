@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   post 'subscribe_newsletter' => 'users#subscribe_newsletter', as: 'new_subscription'
   get 'article' => 'users#article', as: 'track_article'
   get 'podcast' => 'users#podcast', as: 'track_podcast'
+  get ':slug/podcast' => 'pages#podcast', as: 'show_podcast'
 
   get 'aviso_de_privacidad' => 'pages#privacy_policy', as: 'privacy_policy'
 

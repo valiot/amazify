@@ -15,6 +15,15 @@ class PagesController < ApplicationController
     end
   end
 
+  def podcast
+    @podcast = Podcast.find_by_slug(params[:slug])
+    if @podcast.guests.include? ";"
+      @guests = @podcast.guests.split ";"
+    else
+      @guests = [@podcast.guests]
+    end
+  end
+
   def privacy_policy
   end
 

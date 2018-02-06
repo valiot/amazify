@@ -49,6 +49,7 @@ class Admin::PodcastsController < Admin::ApplicationController
     @podcast.audio_link.gsub!(/(\&|)utm([_a-z0-9=]+)/, '')
     @podcast.image = upload_to_s3(params[:podcast][:image])
     @podcast.thumbnail = upload_to_s3(params[:podcast][:thumbnail])
+    @podcast.slug = @podcast.title.parameterize
     if @podcast.save
       redirect_to [:admin, @podcast], notice: 'Podcast was successfully created.'
     else
@@ -67,6 +68,7 @@ class Admin::PodcastsController < Admin::ApplicationController
       @mew = "lola"
       @podcast_update[:thumbnail] = upload_to_s3(params[:podcast][:thumbnail])
     end
+    @podcast.slug = @podcast.title.parameterize
     if @podcast.update(@podcast_update)
       redirect_to [:admin, @podcast], notice: 'Podcast was successfully updated.'
     else
@@ -101,6 +103,6 @@ class Admin::PodcastsController < Admin::ApplicationController
   end
 
   def podcast_params
-    params.require(:podcast).permit(:episode, :video_link, :audio_link, :image, :text, :thumbnail, :title, :category_id, :tags)
+    params.require(:podcast).permit(:episode, :video_link, :audio_link, :image, :text, :thumbnail, :published, :title, :guests, :quote, :category_id, :tags)
   end
 end

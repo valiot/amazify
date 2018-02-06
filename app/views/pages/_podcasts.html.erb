@@ -24,7 +24,7 @@
             </figure>
             <div class="fb-share-button" data-href="https://amazify.co/podcast?id=<%= podcast.id %>" data-layout="button"></div>
             <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=%22<%= truncate(podcast.title, length: 30) %>%22&via=AmazifyCo&url=https%3A%2F%2Famazify.co%2Fpodcast%3Fid%3D<%= podcast.id %>">Tweet</a>
-            <h3 class="podcast-title"><%= truncate(podcast.title, length: 90) %></h3>
+            <h3 class="podcast-title"><%= link_to truncate(podcast.title, length: 90), '/'+podcast.slug+'/podcast' %></h3>
           </article>
       <% end %>
     </div>

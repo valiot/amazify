@@ -33,6 +33,25 @@
     <%=f.error_span(:title) %>
   </div>
   <div class="form-group">
+    <%= f.label :published, class: 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.date_field :published, class: 'form-control' %>
+    </div>
+    <%= f.label :guests, class: 'control-label col-lg-1' %>
+    <div class="col-lg-7">
+      <%= f.text_field :guests, class: 'form-control', placeholder: 'Nombre. Puesto de Empresa; Nombre. Puesto de Empresa; etc...' %>
+    </div>
+    <%=f.error_span(:published) %>
+    <%=f.error_span(:guests) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :quote, class: 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :quote, class: 'form-control' %>
+    </div>
+    <%=f.error_span(:quote) %>
+  </div>
+  <div class="form-group">
     <%= f.label :video_link, class: 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.text_field :video_link, class: 'form-control' %>

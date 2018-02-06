@@ -187,4 +187,10 @@ $(document).on('turbolinks:load', function() {
       });
     }
   });
+  $(".modal-body > input").focusin(function () {
+    $(".modal-body").find('p[data-form="'+$(this).data("form")+'"]').css("color", "#e9b54c");
+  });
+  $(".modal-body > input").focusout(function () {
+    $(".modal-body").find('p[data-form="'+$(this).data("form")+'"]').css("color", "#6377b8");
+  });
 });
