@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get 'podcast' => 'users#podcast', as: 'track_podcast'
   get ':slug/podcast' => 'pages#podcast', as: 'show_podcast'
 
-  get 'aviso_de_privacidad' => 'pages#privacy_policy', as: 'privacy_policy'
+  get 'aviso-de-privacidad' => 'pages#privacy_policy', as: 'privacy_policy'
 
   get 'issues/latest' => 'issues#latest', as: 'issue_latest'
 
