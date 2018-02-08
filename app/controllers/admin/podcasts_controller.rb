@@ -36,7 +36,7 @@ class Admin::PodcastsController < Admin::ApplicationController
 
   def new
     @podcast = Podcast.new
-	end
+  end
 
   def edit
   end
