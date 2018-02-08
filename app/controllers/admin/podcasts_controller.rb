@@ -66,7 +66,7 @@ class Admin::PodcastsController < Admin::ApplicationController
     if params[:podcast][:thumbnail]
       @podcast_update[:thumbnail] = upload_to_s3(params[:podcast][:thumbnail])
     end
-    @podcast.slug = @podcast.title.parameterize
+    @podcast.slug = params[:podcast][:title].parameterize
     if @podcast.update(@podcast_update)
       redirect_to [:admin, @podcast], notice: 'Podcast was successfully updated.'
     else
