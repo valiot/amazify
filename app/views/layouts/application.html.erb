@@ -66,10 +66,34 @@
       size="xlarge"
       style="
         position: fixed;
-        bottom: 58px;
+        bottom: 88px;
         right: calc(2.5%);
         z-index: 15">
     </div>
     <%= yield %>
+    <!-- footer of home-->
+    <footer class="footer">
+      <div class="copyrights">
+        <div class="socialmedia" id="socialmedia">
+          <a href="https://www.facebook.com/amazify.co/" class="social-link" target="_blank">
+            <%= image_tag 'icon-facebook.svg', alt: 'Facebook' %>
+          </a>
+          <!-- <a href="#0" class="social-link" target="_blank">
+            <%= image_tag 'icon-twitter.svg', alt: 'Twitter' %>
+          </a> -->
+          <a href="https://www.instagram.com/amazify.co/" class="social-link" target="_blank">
+            <%= image_tag 'icon-instagram.svg', alt: 'Instagram' %>
+          </a>
+        </div>
+        <div>
+          <p>mauricio@amazify.co</p>
+          <p>Circuito Frida Kahlo, Torre Vértice #195,<br>San Pdero Garza García, Nuevo León.</p>
+          <p>Amazify.co - Todos los derechos reservados, <%= Date.today.year %></p>
+        </div>
+        <a href="https://nochesdepitcheo.com/" class="powered-by">
+          <%= image_tag 'powered-by.svg', alt: 'Powered by Noches de Pitcheo' %>
+        </a>
+      </div>
+    </footer>
   </body>
 </html>
