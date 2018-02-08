@@ -61,11 +61,9 @@ class Admin::PodcastsController < Admin::ApplicationController
     authorize @podcast
     @podcast_update = podcast_params
     if params[:podcast][:image]
-      @mew = "lol"
       @podcast_update[:image] = upload_to_s3(params[:podcast][:image])
     end
     if params[:podcast][:thumbnail]
-      @mew = "lola"
       @podcast_update[:thumbnail] = upload_to_s3(params[:podcast][:thumbnail])
     end
     @podcast.slug = @podcast.title.parameterize
