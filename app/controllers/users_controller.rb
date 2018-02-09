@@ -45,12 +45,10 @@ class UsersController < ApplicationController
       medium = params[:medium] + '_link'
       if Podcast.find(params[:id]).respond_to? (medium)
         @url = Podcast.find(params[:id]).public_send(medium)
-      else
-        redirect_to "/"
+        return @url
       end
-    else
-      redirect_to "/"
     end
+    redirect_to "/"
   end
 
   def check_newsletter

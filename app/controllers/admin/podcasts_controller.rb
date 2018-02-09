@@ -1,5 +1,5 @@
 class Admin::PodcastsController < Admin::ApplicationController
-  before_action :set_podcast, only: [:show, :edit, :update, :destroy, :approve, :reject]
+  before_action :set_podcast, except: [:new, :index, :create, :set_podcast]
 
   def index
     @podcasts = Podcast.all
@@ -77,7 +77,7 @@ class Admin::PodcastsController < Admin::ApplicationController
   def destroy
     authorize @podcast
     @podcast.destroy
-    redirect_to podcasts_url, notice: 'Podcast was successfully destroyed.'
+    redirect_to admin_podcasts_url, notice: 'Podcast was successfully destroyed.'
   end
 
   private
