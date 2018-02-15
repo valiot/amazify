@@ -45,6 +45,12 @@ a:active,
 a:hover {
   outline-width: 0;
 }
+ul {
+  list-style: none;
+}
+p {
+  margin: 0;
+}
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
@@ -193,6 +199,13 @@ textarea {
   color: #6377b8;
   margin-top: 0;
 }
+.title-section {
+  font-size: calc(2rem + 0.5 * ((100vw - 26.25rem) / 53.75));
+  font-weight: 700;
+  color: #6377b8;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
 @media screen and (min-width: 1280px) {
   .title {
     font-size: 2.5rem;
@@ -260,6 +273,7 @@ body {
   text-rendering: optimizeLegibility;
   font-size: 16px;
   position: relative;
+  color: #4A4A4A;
 }
 .article {
   -webkit-box-flex: 0;
@@ -514,6 +528,10 @@ body {
 .btn--secondary:hover {
   background-color: #e3a21f;
 }
+.btn-share {
+  border-width: 0;
+  margin-top: 1rem;
+}
 .categories {
   width: 100%;
   display: -webkit-box;
@@ -719,7 +737,7 @@ body {
 .main {
   padding-left: calc(50% - (95% / 2));
   padding-right: calc(50% - (95% / 2));
-  min-height: 60vh;
+  min-height: 50vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -739,8 +757,8 @@ body {
 }
 @media only screen and (min-width: 1100px) {
   .main {
-    background: asset-data-url("main-bg-right.svg") no-repeat 100% 50%, asset-data-url("main-bg-left.svg") no-repeat -5% 50%, -webkit-gradient(linear, left top, right top, color-stop(0, #6377b8), to(#734c98));
-    background: asset-data-url("main-bg-right.svg") no-repeat 100% 50%, asset-data-url("main-bg-left.svg") no-repeat -5% 50%, linear-gradient(90deg, #6377b8 0, #734c98 100%);
+    background: asset-data-url("main-bg-right2.svg") no-repeat 130% 50%, asset-data-url("main-bg-left2.svg") no-repeat 0% 50%, -webkit-gradient(linear, left top, right top, color-stop(0, #6377b8), to(#734c98));
+    background: asset-data-url("main-bg-right2.svg") no-repeat 130% 50%, asset-data-url("main-bg-left2.svg") no-repeat 0% 50%, linear-gradient(90deg, #6377b8 0, #734c98 100%);
     background-size: contain, contain, auto;
   }
 }
@@ -750,17 +768,22 @@ body {
   }
 }
 .mainHeader {
-  padding-left: calc(50% - (95% / 2));
-  padding-right: calc(50% - (95% / 2));
+  padding-left: calc(50vw - (80% / 2));
+  padding-right: calc(50vw - (80% / 2));
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center;
+      justify-content: center;
   position: absolute;
   top: 2rem;
+  z-index: 1;
+}
+.header-logo {
+  position: absolute;
+  left: 10%;
 }
 .newsletter {
   color: #fff;
@@ -814,16 +837,6 @@ body {
 }
 .button:hover {
   background-color: #495d9f;
-}
-.container {
-  padding-left: calc(50% - (95% / 2));
-  padding-right: calc(50% - (95% / 2));
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
 }
 @media only screen and (max-width: 1140px) {
   .container {
@@ -1046,13 +1059,6 @@ article.login-request > div {
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
 }
-.podcasts-title {
-  font-size: calc(2rem + 0.5 * ((100vw - 26.25rem) / 53.75));
-  font-weight: 700;
-  color: #6377b8;
-  margin-top: 0;
-  margin-bottom: 2rem;
-}
 @media screen and (min-width: 1280px) {
   .podcasts-title {
     font-size: 2.5rem;
@@ -1072,6 +1078,9 @@ article.login-request > div {
   margin-left: 10px;
   width: calc(100% - 305px);
 }
+.soundcloud-frame {
+  margin: 2rem 0;
+}
 
 #clear-filter {
   text-align: right;
@@ -1083,32 +1092,33 @@ article.login-request > div {
 }
 
 //Podcasts
-.podcast-image {
-  height: 80vh;
-  overflow: hidden;
-  background-image: linear-gradient(-180deg, #6377B8 0%, #734C98 100%), linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, #734C98 100%);
-  margin-bottom: -20vh;
+.article-background {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: calc(50vw - (800px / 2));
 }
-.podcast-image img {
-  min-height: 80vh;
-  width: 100vw;
-  opacity: 0.5;
-  filter: grayscale(100%);
-}
-.podcast-image p {
-  padding-left: 30%;
-  width: 60%;
+.article-background::before {
+  content: '';
+  background-image: linear-gradient(-1deg, #6377B8 0%, #734C98 100%);
+  opacity: .7;
   position: absolute;
-  top: 30%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.quote {
+  font-weight: 600;
+  max-width: 400px;
   color: #fff;
   font-size: 2rem;
 }
-.container.container-podcast {
-  padding: 0px;
-}
-.container > .podcast {
-  background: #FFF;
-  margin: 0px 15vw;
-  width: 100%;
+.quote-podcast {
+  position: relative;
   z-index: 1;
 }

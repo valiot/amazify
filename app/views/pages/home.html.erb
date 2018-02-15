@@ -3,13 +3,14 @@
   <a href="/" class="header-logo">
     <%= image_tag 'logo-white.svg' %>
   </a>
+  <button class="btn btn--secondary" type="button" name="button">Registrar</button>
 </header>
 <a id="btn_user" class="hidden">Hola</a>
 <main class="main" id="main">
   <h1 class="title-main">We share content and ideas that matter</h1>
 </main>
 <!-- header of home-->
-<% #show_podcast %>
+<%= show_podcast %>
 <section class="container">
   <div class="categories">
     <h2 class="categories-title">Categories:</h2>
@@ -26,7 +27,7 @@
   </div>
 
   <div class="articles" id="article">
-    <h2 class="articles-title"><br><%= @category&.name&.titleize || 'Recomendaciones de hoy' %>:</h2>
+    <h2 class="title-section"><br><%= @category&.name&.titleize || 'Recomendaciones de hoy' %>:</h2>
     <div class="articles-container">
       <%= render 'articles' %>
     </div>
