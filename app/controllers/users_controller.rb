@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout 'og_link', only: [:article]
+  layout 'og_link', only: [:article, :podcast]
   protect_from_forgery except: :user_assistance
 
   def register_face
@@ -38,6 +38,16 @@ class UsersController < ApplicationController
     else
       redirect_to "/"
     end
+  end
+
+  def podcast
+    if params[:id] && params[:medium]
+      medium = params[:medium] + '_link'
+      if Podcast.find(params[:id]).respond_to? (medium)
+        return Podcast.find(params[:id]).public_send(medium)
+      end
+    end
+    redirect_to "/"
   end
 
   def check_newsletter

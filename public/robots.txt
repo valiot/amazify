@@ -6,4 +6,3 @@
 
 User-agent: *
 Disallow: /admin
-Disallow: /aviso_de_privacidad

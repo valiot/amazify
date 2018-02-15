@@ -69,7 +69,7 @@ class Admin::ArticlesController < Admin::ApplicationController
   def destroy
     authorize @article
     @article.destroy
-    redirect_to articles_url, notice: 'Article was successfully destroyed.'
+    redirect_to admin_articles_url, notice: 'Article was successfully destroyed.'
   end
 
   private

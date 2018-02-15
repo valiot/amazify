@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>Podcast</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Episode</strong></dt>
+  <dd><%= @podcast.episode %></dd>
+  <dt><strong>Reading Time</strong></dt>
+  <dd><%= @podcast.reading_time %></dd>
+  <dt><strong>Title</strong></dt>
+  <dd><%= @podcast.title %></dd>
+  <dt><strong>Video</strong></dt>
+  <dd><%= link_to @podcast.video_link, @podcast.video_link, target: :blank %></dd>
+  <dt><strong>Audio</strong></dt>
+  <dd><%= link_to @podcast.audio_link, @podcast.audio_link, target: :blank %></dd>
+  <dt><strong>Image</strong></dt>
+  <dd><%= image_tag @podcast.image, style: 'width:300px;height:auto;' %></dd>
+  <dt><strong>Thumbnail</strong></dt>
+  <dd><%= image_tag @podcast.thumbnail, style: 'width:300px;height:auto;' %></dd>
+  <dt><strong>Tags</strong></dt>
+  <dd><%= @podcast.tags %></dd>
+  <dt><strong>Category</strong></dt>
+  <dd><%= @podcast.category.name %></dd>
+</dl>
+
+<%= link_to 'Back', admin_podcasts_path, class: 'btn btn-default'  %>
+<%= link_to 'Edit', edit_admin_podcast_path(@podcast), class: 'btn btn-default' %>
+<%= link_to 'Delete', admin_podcast_path(@podcast), method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

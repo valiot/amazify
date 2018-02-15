@@ -10,9 +10,12 @@ Rails.application.routes.draw do
     post 'articles/approve/:id' => 'articles#approve', as: 'approve_article'
     post 'articles/reject/:id' => 'articles#reject', as: 'reject_article'
     get 'articles/unauthorized' => 'articles#unauthorized', as: 'unauthorized'
+    post 'podcasts/approve/:id' => 'podcasts#approve', as: 'approve_podcast'
+    post 'podcasts/reject/:id' => 'podcasts#reject', as: 'reject_podcast'
     post 'sessions/' => 'sessions#create'
 
     resources :articles
+    resources :podcasts
     resources :categories
   end
 
@@ -21,9 +24,11 @@ Rails.application.routes.draw do
   post 'user_assistance' => 'users#user_assistance', as: 'user_assistance'
   post 'check_newsletter' => 'users#check_newsletter', as: 'check_subscription'
   post 'subscribe_newsletter' => 'users#subscribe_newsletter', as: 'new_subscription'
-  get 'article' => 'users#article', as: 'track_link'
+  get 'article' => 'users#article', as: 'track_article'
+  get 'podcast' => 'users#podcast', as: 'track_podcast'
+  get ':slug/podcast' => 'pages#podcast', as: 'show_podcast'
 
-  get 'aviso_de_privacidad' => 'pages#privacy_policy', as: 'privacy_policy'
+  get 'aviso-de-privacidad' => 'pages#privacy_policy', as: 'privacy_policy'
 
   get 'issues/latest' => 'issues#latest', as: 'issue_latest'
 

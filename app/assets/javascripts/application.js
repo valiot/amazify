@@ -54,7 +54,7 @@ function statusChangeCallback (response) {
     FB.api(
       '/me',
       'GET',
-      {"fields":"id,name,email,short_name"},
+      {"fields":"id,name,email,short_name,gender,location"},
       function(response) {
         $.post(
           '/register_face',
@@ -186,5 +186,11 @@ $(document).on('turbolinks:load', function() {
         }, 5000);
       });
     }
+  });
+  $(".modal-body > input").focusin(function () {
+    $(".modal-body").find('p[data-form="'+$(this).data("form")+'"]').css("color", "#e9b54c");
+  });
+  $(".modal-body > input").focusout(function () {
+    $(".modal-body").find('p[data-form="'+$(this).data("form")+'"]').css("color", "#6377b8");
   });
 });

@@ -9,18 +9,18 @@
   <h1 class="title-main">We share content and ideas that matter</h1>
 </main>
 <!-- header of home-->
-<%= show_podcast %>
+<% #show_podcast %>
 <section class="container">
   <div class="categories">
     <h2 class="categories-title">Categories:</h2>
     <% if @slug %>
       <div class="filter-container">
-        <a class="btn btn--secondary" id="clear-filter" href="/">Clear filter</a>
+        <%= link_to "Clear filter", root_path, class: "btn btn--secondary", id: "clear-filter", 'data-turbolinks' => false %>
       </div>
     <% end %>
     <div class="categories-container">
       <% @categories.each do |category| %>
-        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category", id: "#{category.slug}" %>
+        <%= link_to category.name.titleize, pages_categories_path(slug: category.slug), class: "category", id: "#{category.slug}", 'data-turbolinks' => false %>
       <% end %>
     </div>
   </div>
@@ -39,41 +39,22 @@
   <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" scope="public_profile,email" data-auto-logout-link="true" onlogin="checkLoginState();"></div>
   <br>
 </article>
-<!-- footer of home-->
-<footer class="footer">
-  <div class="copyrights">
-    <div class="socialmedia" id="socialmedia">
-      <a href="https://www.facebook.com/amazify.co/" class="social-link" target="_blank">
-        <%= image_tag 'icon-facebook.svg', alt: 'Facebook' %>
-      </a>
-      <!-- <a href="#0" class="social-link" target="_blank">
-        <%= image_tag 'icon-twitter.svg', alt: 'Twitter' %>
-      </a> -->
-      <!-- <a href="#" class="social-link" target="_blank">
-        <%= image_tag 'icon-instagram.svg', alt: 'Instagram' %>
-      </a> -->
-    </div>
-    <p>Amazify.co - Todos los derechos reservados, 2017</p>
-    <a href="https://nochesdepitcheo.com/" class="powered-by">
-      <%= image_tag 'powered-by.svg', alt: 'Powered by Noches de Pitcheo' %>
-    </a>
-  </div>
-</footer>
 
 <div id="user_data" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2>¡Hola <span></span>! En este momento puedes editar tu información para que recibas de la mejor forma todas nuestras sorpresas :)</h2>
+      <h2>¡Hola <span></span>!</h2>
     </div>
     <div class="modal-body">
+      <p>En este momento puedes editar tu información para que recibas de la mejor forma todas nuestras sorpresas :)</p>
       <input id="facebook" type="hidden"/>
-      <p>Tu nombre:</p>
-      <input id="name" type="text" required/>
+      <p data-form="name">Tu nombre:</p>
+      <input id="name" type="text" required data-form="name"/>
       <label><em id="lb_name">Debes agregar tu nombre :)</em></label>
-      <p>Tu email:</p>
-      <input id="email" type="email" required/>
+      <p data-form="email">Tu email:</p>
+      <input id="email" type="email" required data-form="email"/>
       <label><em id="lb_email">Debes agregar un email válido :)</em></label>
       <button id="update_data" type="button" class="button">Actualizar datos</button>
     </div>

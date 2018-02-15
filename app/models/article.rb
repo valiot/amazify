@@ -1,11 +1,12 @@
 require 'open-uri'
-class Article < ActiveRecord::Base
+class Article < ApplicationRecord
   belongs_to :category
   belongs_to :user
   belongs_to :issue
   enum status: [:submited, :approved, :rejected]
   enum tags: [:begginer, :intermediate, :advanced]
   validates :link, uniqueness: true, presence: true
+  validate :check_protocol
 
   before_create :parse_link
   before_create :set_issue
@@ -97,6 +98,12 @@ class Article < ActiveRecord::Base
     self.title = page.title
     self.length = page.body_length
     self.image = crop_image_and_upload_to_s3(page.images.best) || nil
+  end
+
+  def check_protocol
+    return if link.starts_with? 'https'
+    errors.add :HTTPS_Protocol, 'Check that the link have "https" instead of "http"'
+    false
   end
 
   def set_issue
