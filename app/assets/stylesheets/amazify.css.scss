@@ -777,9 +777,17 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center;
-  position: absolute;
+  position: fixed;
   top: 2rem;
   z-index: 1;
+}
+.mainHeader.is-scrolled {
+  background: rgba(99,119,184,0.80);
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.16);
+  top: 0;
+  padding: 1rem 0;
+  z-index: 1;
+  transition: 350ms all ease;
 }
 .header-logo {
   position: absolute;

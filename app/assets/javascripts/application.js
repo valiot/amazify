@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require tracking
 //= require social
+//= require main-header
 
 $.fn.scrollPosReaload = function(){
   if (localStorage) {
