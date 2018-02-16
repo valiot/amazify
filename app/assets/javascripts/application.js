@@ -18,6 +18,19 @@
 //= require social
 //= require main-header
 
+// $(window).scroll(function () {
+//   var
+//     thObj = $('.articleNav-sidebar-pro'),
+//     thTop = 134,//$('.articleNav-sidebar').offset().top,
+//     thScroll = $(window).scrollTop();
+//   //console.log(thScroll + ' s ' + thTop);
+//   if (thScroll > thTop) {
+//     thObj.css('top', (thScroll - thTop) + 70 + 'px');
+//   } else {
+//     thObj.css('top', thTop + 'px');
+//   }
+// });
+
 $.fn.scrollPosReaload = function(){
   if (localStorage) {
     var posReader = localStorage["posStorage"];
