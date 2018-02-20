@@ -17,6 +17,7 @@
 //= require tracking
 //= require social
 //= require main-header
+//= require articleNav-sidebar
 
 // $(window).scroll(function () {
 //   var

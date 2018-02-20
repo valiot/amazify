@@ -1169,11 +1169,13 @@ article.login-request > div {
   align-items: center;
 }
 .articleNav-sidebar {
-  display: inline-flex;
+  position: absolute;
+  top: calc(100vh + 300px);
+  right: calc(50% - 400px);
 }
-.articleNav-sidebar-pro {
+.articleNav-sidebar.scrolled {
   position: fixed;
-  right: calc(50vw - (800px / 2));
+  top: 4rem;
 }
 .article-titleSection {
   color: #6377B8;

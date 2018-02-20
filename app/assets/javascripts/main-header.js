@@ -3,7 +3,7 @@ $(document).ready(function () {
     var $header = $('.mainHeader')
     var $headerTop = $(window).scrollTop()
 
-    if ($headerTop > 1) {
+    if ($headerTop > 0) {
       $header.addClass('is-scrolled')
     } else {
       $header.removeClass('is-scrolled')
