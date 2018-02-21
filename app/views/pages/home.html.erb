@@ -4,8 +4,15 @@
   <h1 class="title-main">We share content and ideas that matter</h1>
 </main>
 <!-- header of home-->
-<%= show_podcast %>
 <section class="container">
+  <div class="podcasts" id="podcasts">
+    <h2 class="title-section"><br><%= @category&.name&.titleize || 'The best we got yet' %>:</h2>
+    <div class="articles-container">
+      <%= show_podcast %>
+    </div>
+    <%= link_to_next_page(@articles, 'Seguir Leyendo', remote: true, id: "load_more_link", class: 'btn btn--primary btn--loadmore', "data-turbolinks-track": false ) %>
+  </div>
+
   <div class="categories">
     <h2 class="categories-title">Categories:</h2>
     <% if @slug %>

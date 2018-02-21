@@ -1,4 +1,4 @@
-<section class="container">
+<!-- <section class="container">
   <div class="podcasts" id="podcast">
     <h2 class="title-section">The best we got yet:</h2>
       <div class="podcasts-container">
@@ -29,4 +29,29 @@
       <% end %>
     </div>
   </div>
-</section>
+</section> -->
+<% @podcasts.each do |podcast| %>
+  <article class="article">
+    <span class="article-readTime"><%= podcast.reading_time %> minutos #<%= podcast.tags %></span>
+    <a href="#0" class="article-category"><%= podcast.category.name.titleize %></a>
+      <figure class="article-image">
+        <a href="/podcasts/<%= podcast.id %>" class="podcast-link" target="_blank">
+          <%= image_tag podcast.thumbnail %>
+        </a>
+        <div class="podcastHover">
+          <a class="podcastHover-content" href="/podcast?id=<%= podcast.id %>&medium=video" target="_blank">
+            <p class="podcastHover-text">See it</p>
+            <%= image_tag 'icon-youtube.svg', alt: 'Youtube' %>
+          </a>
+          <a class="podcastHover-content" href="/podcast?id=<%= podcast.id %>&medium=audio" target="_blank">
+            <p class="podcastHover-text">Listen it</p>
+            <%= image_tag 'icon-soundcloud.svg', alt: 'soundcloud' %>
+          </a>
+        </div>
+      </figure>
+      <div class="fb-share-button" data-href="https://amazify.co/article?id=<%= podcast.id %>" data-layout="button"></div>
+      <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=%22<%= truncate(podcast.title, length: 30) %>%22&via=AmazifyCo&url=https%3A%2F%2Famazify.co%2Fpodcast%3Fid%3D<%= podcast.id %>">Tweet</a>
+      <h3 class="article-title"><%= link_to truncate(podcast.title, length: 90), '/'+podcast.slug+'/podcast' %></h3>
+    </a>
+  </article>
+<% end %>
