@@ -201,7 +201,7 @@ textarea {
   margin-top: 0;
 }
 .title-section {
-  font-size: calc(1.rem + 0.5 * ((100vw - 26.25rem) / 53.75));
+  font-size: calc(1.2rem + 0.5 * ((100vw - 26.25rem) / 53.75));
   font-weight: 700;
   color: #6377b8;
   margin-top: 0;
@@ -534,6 +534,7 @@ body {
   display: -ms-flexbox;
   margin-top: 4rem;
   display: flex;
+  align-self: flex-start;
 }
 .categories.is-fixedDesktop {
   position: fixed;

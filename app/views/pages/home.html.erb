@@ -36,12 +36,6 @@
   </div>
 </section>
 <!-- request of home -->
-<article class="login-request">
-  <p>Regístrate para mandarte los mejores artículos de acuerdo a tus intereses :)</p>
-  <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" scope="public_profile,email" data-auto-logout-link="true" onlogin="checkLoginState();"></div>
-  <br>
-</article>
-
 <div id="user_data" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
@@ -49,6 +43,7 @@
       <span class="close">&times;</span>
       <h2>¡Hola <span></span>!</h2>
     </div>
+
     <div class="modal-body">
       <p>En este momento puedes editar tu información para que recibas de la mejor forma todas nuestras sorpresas :)</p>
       <input id="facebook" type="hidden"/>
@@ -60,6 +55,7 @@
       <label><em id="lb_email">Debes agregar un email válido :)</em></label>
       <button id="update_data" type="button" class="button">Actualizar datos</button>
     </div>
+
     <div class="modal-footer">
       <h2>Recibe en tu correo contenido seleccionado<br>de la plataforma semanalmente.</h2>
       <a id="user_subscribe" class="btn btn--secondary">Subscríbete</a>
