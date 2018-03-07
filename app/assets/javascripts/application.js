@@ -59,11 +59,13 @@ function statusChangeCallback (response) {
     ga('send', 'event', 'Usuarios', 'Visita', 'Sin cuenta', {
       nonInteraction: true
     });
+    $('#fb-login-button').removeClass('hidden');
   } else if (response['status'] !== 'connected') {
     $('article.login-request').removeClass('hidden');
     ga('send', 'event', 'Usuarios', 'Visita', 'Sin Facebook', {
       nonInteraction: true
     });
+    $('#fb-login-button').removeClass('hidden');
   } else if (response['status'] === 'connected') {
     $('article.login-request').addClass('hidden');
     FB.api(
